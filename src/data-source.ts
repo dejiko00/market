@@ -1,4 +1,5 @@
 import { DataSource } from "typeorm";
+import { ProductTypeEntity } from "./models/product-type";
 
 const { MSSQL_SA_USER, MSSQL_SA_PASSWORD, MSSQL_TCP_PORT } = process.env;
 
@@ -15,7 +16,7 @@ const dataSource = new DataSource({
     encrypt: true,
   },
   logging: true,
-  entities: [],
+  entities: [ProductTypeEntity],
   migrations: [],
   subscribers: [],
 });
