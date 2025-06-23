@@ -1,12 +1,18 @@
+import express from "express";
 import ProductTypeController from "./controllers/product-type";
 import dataSource from "./data-source";
+import Env from "./env";
 
 export default class App {
+  app: express.Application;
+
   constructor() {
+    this.app = express();
     this.initDatabase();
+    this.initControllers();
   }
 
-  async initDatabase() {
+  private async initDatabase() {
     dataSource
       .initialize()
       .then(() => {
@@ -19,7 +25,15 @@ export default class App {
       });
   }
 
-  async initControllers() {
-    new ProductTypeController();
+  private async initControllers() {
+    new ProductTypeController(this.app);
+  }
+
+  listen() {
+    this.app.listen(Env.NODE_PORT, () => {
+      console.log(
+        `App listening on ${Env.NODE_PORT} in ${this.app.get("env")} mode.`
+      );
+    });
   }
 }
