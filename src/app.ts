@@ -1,5 +1,6 @@
 import express from "express";
 import ProductTypeController from "./controllers/product-type";
+import ProductVarietyController from "./controllers/product-variety";
 import dataSource from "./data-source";
 import Env from "./env";
 
@@ -26,7 +27,8 @@ export default class App {
   }
 
   private async initControllers() {
-    new ProductTypeController(this.app);
+    new ProductTypeController(this.app).initRoutes();
+    new ProductVarietyController(this.app).initRoutes();
   }
 
   listen() {

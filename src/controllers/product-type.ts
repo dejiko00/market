@@ -2,20 +2,18 @@ import type express from "express";
 import type { Repository } from "typeorm";
 import dataSource from "../data-source";
 import type ProductType from "../interfaces/product-type";
-import { ProductTypeEntity } from "../models/product-type";
-
+import { productTypeEntity } from "../models/product-type";
 export default class ProductTypeController {
-  path = "/products";
+  public path = "/products";
   private repository: Repository<ProductType>;
   private app: express.Application;
 
   constructor(app: express.Application) {
     this.app = app;
-    this.repository = dataSource.getRepository(ProductTypeEntity);
-    this.initRoutes();
+    this.repository = dataSource.getRepository(productTypeEntity);
   }
 
-  private initRoutes() {
+  public initRoutes() {
     this.app.route(`${this.path}`).get(this.getAll);
     this.app.route(`${this.path}/:id`).get(this.findOne);
   }
@@ -28,6 +26,9 @@ export default class ProductTypeController {
     try {
       const products = await this.repository.find({
         select: { id: true, name: true },
+        relations: {
+          product_varieties: true,
+        },
       });
       res.status(200).json(products);
     } catch (e) {
@@ -42,11 +43,14 @@ export default class ProductTypeController {
   ) => {
     try {
       const id = parseInt(req.params.id);
-      const products = await this.repository.find({
+      const products = await this.repository.findOne({
+        select: { id: true, name: true },
         where: {
           id: id,
         },
-        select: { id: true, name: true },
+        relations: {
+          product_varieties: true,
+        },
       });
       res.status(200).json(products);
     } catch (e) {

@@ -27,6 +27,7 @@
     "express": "^5.1.0",
     "mssql": "^11.0.1",
     "reflect-metadata": "^0.2.2",
+    "tough-cookie": "^5.1.2",
     "typeorm": "^0.3.25"
   }
 }

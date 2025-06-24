@@ -1,7 +1,7 @@
 import { EntitySchema } from "typeorm";
 import type ProductType from "../interfaces/product-type";
 
-export const ProductTypeEntity = new EntitySchema<ProductType>({
+export const productTypeEntity = new EntitySchema<ProductType>({
   name: "productType",
   tableName: "dbo.ProductType",
   columns: {
@@ -9,6 +9,7 @@ export const ProductTypeEntity = new EntitySchema<ProductType>({
       type: "int",
       primary: true,
       generated: true,
+      select: false,
     },
     name: {
       type: "nvarchar",
@@ -19,10 +20,20 @@ export const ProductTypeEntity = new EntitySchema<ProductType>({
     date_added: {
       type: "datetime2",
       nullable: false,
+      select: false,
     },
     date_modified: {
       type: "datetime2",
       nullable: false,
+      select: false,
+    },
+  },
+  relations: {
+    product_varieties: {
+      target: "productVariety",
+      type: "one-to-many",
+      inverseSide: "product_type",
+      nullable: true,
     },
   },
 });

@@ -1,6 +1,7 @@
 import { DataSource } from "typeorm";
 import Env from "./env";
-import { ProductTypeEntity } from "./models/product-type";
+import { productTypeEntity } from "./models/product-type";
+import { productVarietyEntity } from "./models/product-variety";
 
 const dataSource = new DataSource({
   type: "mssql",
@@ -15,7 +16,7 @@ const dataSource = new DataSource({
     encrypt: true,
   },
   logging: true,
-  entities: [ProductTypeEntity],
+  entities: [productTypeEntity, productVarietyEntity],
   migrations: [],
   subscribers: [],
 });

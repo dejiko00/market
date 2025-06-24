@@ -1,0 +1,6 @@
+GET http://localhost:3000/products/1/varieties
+###
+GET http://localhost:3000/products/1/varieties/5
+###
+POST http://localhost:3000/products/6/varieties
+###
