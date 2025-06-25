@@ -90,26 +90,4 @@ export default class ProductVarietyController {
       where: productVarietyIds,
     });
   };
-
-  //   private save = async (
-  //     req: express.Request,
-  //     res: express.Response,
-  //     next: express.NextFunction
-  //   ) => {
-  //     try {
-  //       //const {  } = req.body;
-
-  //       const productType: ProductVariety = {
-  //         name: "Variety2",
-  //         id_product_type: 1,
-  //         date_added: new Date(),
-  //         date_modified: new Date(),
-  //       };
-  //       await this.repository.save(productType);
-  //       res.status(200);
-  //     } catch (e) {
-  //       console.log(e);
-  //       next(e);
-  //     }
-  //   };
 }
