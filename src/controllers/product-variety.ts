@@ -1,22 +1,20 @@
 import type express from "express";
-import type { Repository } from "typeorm";
+import type { EntityManager, Repository } from "typeorm";
 import dataSource from "../data-source";
 import type ProductVariety from "../interfaces/product-variety";
 import { productVarietyEntity } from "../models/product-variety";
 
 export default class ProductVarietyController {
   path = `/products/:pid/varieties`;
-  private app: express.Application;
   private repository: Repository<ProductVariety>;
 
-  constructor(app: express.Application) {
-    this.app = app;
+  constructor() {
     this.repository = dataSource.getRepository(productVarietyEntity);
   }
 
-  public initRoutes() {
-    this.app.route(`${this.path}`).get(this.getAll);
-    this.app.route(`${this.path}/:vid`).get(this.getOne);
+  public initRoutes(app: express.Application) {
+    app.route(`${this.path}`).get(this.getAll);
+    app.route(`${this.path}/:vid`).get(this.getOne);
   }
 
   private getAll = async (
@@ -71,6 +69,20 @@ export default class ProductVarietyController {
       console.log(e);
       next(e);
     }
+  };
+
+  public addMany = async (
+    productVarieties: ProductVariety[],
+    transactionalEntityManager: EntityManager
+  ) => {
+    return (
+      await transactionalEntityManager
+        .getRepository(productVarietyEntity)
+        .upsert(productVarieties, {
+          conflictPaths: { id_product_type: true, name: true },
+          skipUpdateIfNoValuesChanged: true,
+        })
+    ).identifiers;
   };
 
   //   private save = async (

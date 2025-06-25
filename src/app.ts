@@ -10,7 +10,6 @@ export default class App {
   constructor() {
     this.app = express();
     this.initDatabase();
-    this.initControllers();
   }
 
   private async initDatabase() {
@@ -27,8 +26,8 @@ export default class App {
   }
 
   private async initControllers() {
-    new ProductTypeController(this.app).initRoutes();
-    new ProductVarietyController(this.app).initRoutes();
+    new ProductTypeController().initRoutes(this.app);
+    new ProductVarietyController().initRoutes(this.app);
   }
 
   listen() {

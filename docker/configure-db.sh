@@ -15,7 +15,7 @@ while [[ $i -lt 60 ]] && [[ $EXITCODE -ne 0 ]]; do
 	DBSTATUS=$(/opt/mssql-tools18/bin/sqlcmd -b -h -1 -t 5 -W -S $(hostname),1437 -U sa -P "$MSSQL_SA_PASSWORD" -No -Q "SET NOCOUNT ON; SELECT SUM(state) from sys.databases;")
 	EXITCODE=$?
     i=$((i + 5))
-    echo "═( ु´•͈ω•͈)ゞ═══[Loop: $i | EXITCODE: $EXITCODE]══════════════════════════════════"
+    echo "═( ु´•͈ω•͈)ゞ═══[Loop: $i / 60 | EXITCODE: $EXITCODE]══════════════════════════════"
 done
 
 if [[ $EXITCODE -ne 0 ]]; then 

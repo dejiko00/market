@@ -1,21 +1,20 @@
 import type express from "express";
-import type { Repository } from "typeorm";
+import type { EntityManager, Repository } from "typeorm";
 import dataSource from "../data-source";
 import type ProductType from "../interfaces/product-type";
 import { productTypeEntity } from "../models/product-type";
+
 export default class ProductTypeController {
   public path = "/products";
   private repository: Repository<ProductType>;
-  private app: express.Application;
 
-  constructor(app: express.Application) {
-    this.app = app;
+  constructor() {
     this.repository = dataSource.getRepository(productTypeEntity);
   }
 
-  public initRoutes() {
-    this.app.route(`${this.path}`).get(this.getAll);
-    this.app.route(`${this.path}/:id`).get(this.findOne);
+  public initRoutes(app: express.Application) {
+    app.route(`${this.path}`).get(this.getAll);
+    app.route(`${this.path}/:id`).get(this.findOne);
   }
 
   private getAll = async (
@@ -59,19 +58,27 @@ export default class ProductTypeController {
     }
   };
 
-  //   private save = async (req: express.Request, res: express.Response, next: express.NextFunction) => {
-  //     try {
-  //         const {  } = req.body;
+  public addMany = async (
+    productTypes: ProductType[],
+    transactionalEntityManager: EntityManager
+  ) => {
+    const productTypeIds = (
+      await transactionalEntityManager
+        .getRepository(productTypeEntity)
+        .upsert(productTypes, {
+          conflictPaths: { name: true },
+          skipUpdateIfNoValuesChanged: true,
+        })
+    ).identifiers;
 
-  //         const productType: ProductType = {
-  //             name: "Product3",
-  //             date_added: new Date(),
-  //             date_modified: new Date(),
-  //           };
-  //           this.repository.save(productType);
-  //     } catch (e) {
-  //         console.log(e);
-  //       next(e);
-  //     }
-  //   };
+    return await transactionalEntityManager
+      .getRepository(productTypeEntity)
+      .find({
+        where: productTypeIds,
+        select: {
+          id: true,
+          name: true,
+        },
+      });
+  };
 }
