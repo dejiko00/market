@@ -53,14 +53,13 @@ export default class PriceHistoryController {
     prices: PriceHistory[],
     transactionalEntityManager: EntityManager
   ) => {
+    console.log("prices", prices);
     const priceIds = (
       await transactionalEntityManager.upsert(priceHistoryEntity, prices, {
         skipUpdateIfNoValuesChanged: true,
         conflictPaths: { date_price: true, id_product_variety: true },
       })
     ).identifiers;
-
-    console.log("📝📝📝 priceIds: ", prices);
 
     return await transactionalEntityManager.find(priceHistoryEntity, {
       where: priceIds,
