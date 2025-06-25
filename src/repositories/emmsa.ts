@@ -1,8 +1,10 @@
 import fs from "node:fs/promises";
 import { Cookie, CookieJar } from "tough-cookie";
+import PriceHistoryController from "../controllers/price-history";
 import ProductTypeController from "../controllers/product-type";
 import ProductVarietyController from "../controllers/product-variety";
 import dataSource from "../data-source";
+import type PriceHistory from "../interfaces/price-history";
 import type ProductType from "../interfaces/product-type";
 import type ProductVariety from "../interfaces/product-variety";
 import extractAll from "../utils/regex/extractAll";
@@ -189,9 +191,10 @@ namespace RepoEmmsa {
             return acc;
           }, {});
 
-          const productVarieties = Object.values(groupProducts)
-            .flat()
-            .flatMap<ProductVariety>((product) => {
+          const flatProducts = Object.values(groupProducts).flat();
+
+          let productVarieties = flatProducts.flatMap<ProductVariety>(
+            (product) => {
               const idProductType = productTypesMap[product.type];
               if (idProductType === undefined) return [];
               return {
@@ -200,12 +203,41 @@ namespace RepoEmmsa {
                 date_added: date,
                 date_modified: date,
               };
-            });
+            }
+          );
 
-          console.log(productVarieties);
-
-          await new ProductVarietyController().addMany(
+          productVarieties = await new ProductVarietyController().addMany(
             productVarieties,
+            transactionalEntityManager
+          );
+
+          const productVarietiesMap = productVarieties.reduce<
+            Record<ProductVariety["name"], ProductVariety["id"]>
+          >((acc, prodVar) => {
+            acc[prodVar.name] = prodVar.id;
+            return acc;
+          }, {});
+
+          console.log("ProductVarietiesMap: ", productVarietiesMap);
+
+          const priceHistories = flatProducts.flatMap<PriceHistory>(
+            (product) => {
+              const idProductVariety = productVarietiesMap[product.variety];
+              if (idProductVariety === undefined) return [];
+              return {
+                avg_price: product.avg,
+                max_price: product.max,
+                min_price: product.min,
+                date_price: date,
+                id_product_variety: idProductVariety,
+              };
+            }
+          );
+
+          console.log("🤦‍♀️🤦‍♀️🤦‍♀️🤦‍♀️", priceHistories);
+
+          new PriceHistoryController().addMany(
+            priceHistories,
             transactionalEntityManager
           );
         }

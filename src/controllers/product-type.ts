@@ -63,22 +63,18 @@ export default class ProductTypeController {
     transactionalEntityManager: EntityManager
   ) => {
     const productTypeIds = (
-      await transactionalEntityManager
-        .getRepository(productTypeEntity)
-        .upsert(productTypes, {
-          conflictPaths: { name: true },
-          skipUpdateIfNoValuesChanged: true,
-        })
+      await transactionalEntityManager.upsert(productTypeEntity, productTypes, {
+        conflictPaths: { name: true },
+        skipUpdateIfNoValuesChanged: true,
+      })
     ).identifiers;
 
-    return await transactionalEntityManager
-      .getRepository(productTypeEntity)
-      .find({
-        where: productTypeIds,
-        select: {
-          id: true,
-          name: true,
-        },
-      });
+    return await transactionalEntityManager.find(productTypeEntity, {
+      where: productTypeIds,
+      select: {
+        id: true,
+        name: true,
+      },
+    });
   };
 }

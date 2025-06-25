@@ -75,14 +75,20 @@ export default class ProductVarietyController {
     productVarieties: ProductVariety[],
     transactionalEntityManager: EntityManager
   ) => {
-    return (
-      await transactionalEntityManager
-        .getRepository(productVarietyEntity)
-        .upsert(productVarieties, {
+    const productVarietyIds = (
+      await transactionalEntityManager.upsert(
+        productVarietyEntity,
+        productVarieties,
+        {
           conflictPaths: { id_product_type: true, name: true },
           skipUpdateIfNoValuesChanged: true,
-        })
+        }
+      )
     ).identifiers;
+
+    return await transactionalEntityManager.find(productVarietyEntity, {
+      where: productVarietyIds,
+    });
   };
 
   //   private save = async (

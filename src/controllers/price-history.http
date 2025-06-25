@@ -1,0 +1,4 @@
+GET http://localhost:3000/prices
+###
+GET http://localhost:3000/prices/2
+###

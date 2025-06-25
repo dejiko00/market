@@ -1,5 +1,6 @@
 import { DataSource } from "typeorm";
 import Env from "./env";
+import { priceHistoryEntity } from "./models/price-history";
 import { productTypeEntity } from "./models/product-type";
 import { productVarietyEntity } from "./models/product-variety";
 
@@ -16,7 +17,7 @@ const dataSource = new DataSource({
     encrypt: true,
   },
   logging: true,
-  entities: [productTypeEntity, productVarietyEntity],
+  entities: [productTypeEntity, productVarietyEntity, priceHistoryEntity],
   migrations: [],
   subscribers: [],
 });

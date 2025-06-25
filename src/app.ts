@@ -1,4 +1,5 @@
 import express from "express";
+import PriceHistoryController from "./controllers/price-history";
 import ProductTypeController from "./controllers/product-type";
 import ProductVarietyController from "./controllers/product-variety";
 import dataSource from "./data-source";
@@ -28,6 +29,7 @@ export default class App {
   private async initControllers() {
     new ProductTypeController().initRoutes(this.app);
     new ProductVarietyController().initRoutes(this.app);
+    new PriceHistoryController().initRoutes(this.app);
   }
 
   listen() {
