@@ -7,8 +7,7 @@
     "watch": "concurrently -k -p \"[{name}]\" -n \"TypeScript,Node\" -c \"cyan.bold,green.bold\" \"npm run watch-ts\" \"npm run watch-node\"",
     "watch-ts": "tsc -w",
     "watch-node": "nodemon --env-file=./.env --inspect=0.0.0.0:9229 dist/server.js",
-    "start-docker": "sh ./docker/startdb.sh",
-    "kill-docker": "sh ./docker/kill-containers.sh"
+    "start:database": "pnpm --filter \"database\" start"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +24,7 @@
   },
   "dependencies": {
     "@types/express": "^5.0.3",
+    "bullmq": "^5.56.0",
     "express": "^5.1.0",
     "mssql": "^11.0.1",
     "pino": "^9.7.0",

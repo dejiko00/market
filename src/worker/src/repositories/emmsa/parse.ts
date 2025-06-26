@@ -1,16 +1,16 @@
 import fs from "node:fs/promises";
 import type pino from "pino";
 import type { EntityManager } from "typeorm";
-import PriceHistoryController from "../../controllers/price-history";
-import ProductTypeController from "../../controllers/product-type";
-import ProductVarietyController from "../../controllers/product-variety";
-import dataSource from "../../data-source";
-import type PriceHistory from "../../interfaces/price-history";
-import type ProductType from "../../interfaces/product-type";
-import type ProductVariety from "../../interfaces/product-variety";
-import createLoggerModule from "../../utils/logger/loggerModule";
-import extractAll from "../../utils/regex/extractAll";
-import textFix from "../../utils/textFix";
+import PriceHistoryController from "../../../../controllers/price-history";
+import ProductTypeController from "../../../../controllers/product-type";
+import ProductVarietyController from "../../../../controllers/product-variety";
+import dataSource from "../../../../data-source";
+import type PriceHistory from "../../../../interfaces/price-history";
+import type ProductType from "../../../../interfaces/product-type";
+import type ProductVariety from "../../../../interfaces/product-variety";
+import createLoggerModule from "../../../../utils/logger/loggerModule";
+import extractAll from "../../../../utils/regex/extractAll";
+import textFix from "../../../../utils/textFix";
 import { BASE_URL, URL_PARSED, URL_RESPONSE } from "./common";
 
 interface EmmsaRowProduct {

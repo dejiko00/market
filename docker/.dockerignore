@@ -1,4 +1,0 @@
-Dockerfile
-docker-compose.yml
-kill-containers.sh
-startdb.sh

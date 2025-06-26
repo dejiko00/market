@@ -1,0 +1,1 @@
+FROM redis:8.2-m01-alpine

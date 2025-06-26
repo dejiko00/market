@@ -4,11 +4,10 @@ USER root
 
 WORKDIR /opt/mssql
 
-COPY --chown=mssql:mssql . .
-COPY --chown=mssql:mssql --from=db . .
+COPY --chown=mssql:mssql ./scripts .
 
 RUN chmod +x ./entrypoint.sh ./configure-db.sh
 
 USER mssql
 
-ENTRYPOINT [ "./entrypoint.sh" ]
+ENTRYPOINT [ "/opt/mssql/entrypoint.sh" ]
