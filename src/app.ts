@@ -1,4 +1,6 @@
 import express from "express";
+import logger from "pino-http";
+import type typeorm from "typeorm";
 import PriceHistoryController from "./controllers/price-history";
 import ProductTypeController from "./controllers/product-type";
 import ProductVarietyController from "./controllers/product-variety";
@@ -10,26 +12,33 @@ export default class App {
 
   constructor() {
     this.app = express();
-    this.initDatabase();
+    this.init();
+  }
+
+  private async init() {
+    const connection = await this.initDatabase();
+    this.initMiddleware();
+    this.initControllers(connection);
+  }
+
+  private initMiddleware() {
+    this.app.use(logger());
   }
 
   private async initDatabase() {
-    dataSource
-      .initialize()
-      .then(() => {
-        console.log("Database initialized.");
-        this.initControllers();
-      })
-      .catch((e) => {
-        console.log("Database failed to initialize.");
-        console.log(e);
-      });
+    const connection = await dataSource.initialize().catch((e) => {
+      console.log("Database failed to initialize.");
+      console.log(e);
+      throw Error(e);
+    });
+    console.log("Database initialized.");
+    return connection;
   }
 
-  private async initControllers() {
-    new ProductTypeController().initRoutes(this.app);
-    new ProductVarietyController().initRoutes(this.app);
-    new PriceHistoryController().initRoutes(this.app);
+  private initControllers(connection: typeorm.DataSource) {
+    new ProductTypeController(connection).initRoutes(this.app);
+    new ProductVarietyController(connection).initRoutes(this.app);
+    new PriceHistoryController(connection).initRoutes(this.app);
   }
 
   listen() {

@@ -1,4 +1,5 @@
 import fs from "node:fs/promises";
+import type pino from "pino";
 import type { EntityManager } from "typeorm";
 import PriceHistoryController from "../../controllers/price-history";
 import ProductTypeController from "../../controllers/product-type";
@@ -7,9 +8,10 @@ import dataSource from "../../data-source";
 import type PriceHistory from "../../interfaces/price-history";
 import type ProductType from "../../interfaces/product-type";
 import type ProductVariety from "../../interfaces/product-variety";
+import createLoggerModule from "../../utils/logger/loggerModule";
 import extractAll from "../../utils/regex/extractAll";
 import textFix from "../../utils/textFix";
-import { URL_PARSED, URL_RESPONSE } from "./common";
+import { BASE_URL, URL_PARSED, URL_RESPONSE } from "./common";
 
 interface EmmsaRowProduct {
   type: string;
@@ -25,17 +27,15 @@ const COL_PRODUCT_MIN = 2;
 const COL_PRODUCT_MAX = 3;
 const COL_PRODUCT_AVG = 4;
 
-export const parse = async (date: Date): Promise<boolean> => {
-  const data = await fs
-    .readFile(URL_RESPONSE)
-    .then((data) => {
-      console.log(`😀 Read ${URL_RESPONSE} success!`);
-      return data;
-    })
-    .catch((e) => {
-      console.log(`💀 Failed to read ${URL_RESPONSE}.`);
-      throw Error(e);
-    });
+export const parse = async (date: Date) => {
+  const logger = createLoggerModule(BASE_URL).child({ date });
+  logger.info("beginning parse");
+
+  const data = await fs.readFile(URL_RESPONSE).catch((e) => {
+    logger.error({ path: URL_RESPONSE, error: e }, `readFile failed.`);
+    throw Error(e);
+  });
+  logger.info({ path: URL_RESPONSE, length: data.length }, `readFile success.`);
 
   const rawGroupedProducts = await parseRawProducts(data.toString());
   const groupedProducts = rawGroupedProducts.reduce<
@@ -53,18 +53,24 @@ export const parse = async (date: Date): Promise<boolean> => {
     return acc;
   }, {});
 
-  return (await dataSource.initialize())
+  await (
+    await dataSource.initialize()
+  )
     .transaction((transactionalEntityManager) =>
-      populateDatabase(date, groupedProducts, transactionalEntityManager)
+      populateDatabase(
+        date,
+        groupedProducts,
+        transactionalEntityManager,
+        logger
+      )
     )
-    .then(() => {
-      console.log("😀😀😀😀 Transaction success.");
-      return true;
-    })
-    .catch(() => {
-      console.log("💀💀💀💀 Transaction failed.");
-      return false;
+    .catch((e) => {
+      logger.error({ error: e }, "transaction failed. Executing rollback...");
+      throw Error(e);
     });
+
+  logger.info(`transaction success.`);
+  logger.info({}, `parse success.`);
 };
 
 async function parseRawProducts(contents: string) {
@@ -72,34 +78,32 @@ async function parseRawProducts(contents: string) {
   const getTrContents = extractAll(/<tr\b[^>]*>([\s\S]*?)<\/tr>/gi);
   const getTdContents = extractAll(/<td\b[^>]*>([\s\S]*?)<\/td>/gi);
 
-  const tdGrouped = getTbodyContents(contents)
-    .flatMap(getTrContents)
-    .map(getTdContents);
-
-  await fs
-    .writeFile(URL_PARSED, tdGrouped.map((v) => v.join(", ")).join("\n"))
-    .then(() => {
-      console.log(`😀 Logged: ${URL_PARSED}!`);
-    })
-    .catch((e) => {
-      throw Error(e || `💀💀💀💀 Failed to log ${URL_PARSED}.`);
-    });
-
-  return tdGrouped;
+  return getTbodyContents(contents).flatMap(getTrContents).map(getTdContents);
 }
 
 async function populateDatabase(
   date: Date,
   groupedProducts: Record<string, EmmsaRowProduct[]>,
-  transactionalEntityManager: EntityManager
+  transactionalEntityManager: EntityManager,
+  logger: pino.Logger
 ) {
   const productTypesMap = await populateProductTypes(
     date,
     groupedProducts,
     transactionalEntityManager
   );
-
   const products = Object.values(groupedProducts).flat();
+
+  await fs
+    .writeFile(
+      URL_PARSED,
+      products.map((v) => Object.values(v).join(", ")).join("\n")
+    )
+    .catch((e) => {
+      logger.error({ path: URL_PARSED, error: e }, `writeFile error`);
+      throw Error(e);
+    });
+  logger.info({ path: URL_PARSED }, `writeFile success`);
 
   const productVarietiesMap = await populateProductVarieties(
     date,
@@ -137,7 +141,7 @@ async function populatePriceHistories(
     };
   });
 
-  await new PriceHistoryController().addMany(
+  await PriceHistoryController.addMany(
     priceHistories,
     transactionalEntityManager
   );
@@ -160,7 +164,7 @@ async function populateProductVarieties(
     };
   });
 
-  productVarieties = await new ProductVarietyController().addMany(
+  productVarieties = await ProductVarietyController.addMany(
     productVarieties,
     transactionalEntityManager
   );
@@ -185,7 +189,7 @@ async function populateProductTypes(
     date_modified: date,
   }));
 
-  productTypes = await new ProductTypeController().addMany(
+  productTypes = await ProductTypeController.addMany(
     productTypes,
     transactionalEntityManager
   );

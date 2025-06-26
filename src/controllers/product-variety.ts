@@ -1,20 +1,21 @@
 import type express from "express";
-import type { EntityManager, Repository } from "typeorm";
-import dataSource from "../data-source";
+import type typeorm from "typeorm";
 import type ProductVariety from "../interfaces/product-variety";
 import { productVarietyEntity } from "../models/product-variety";
+import createLoggerModule from "../utils/logger/loggerModule";
 
 export default class ProductVarietyController {
-  path = `/products/:pid/varieties`;
-  private repository: Repository<ProductVariety>;
+  static path = `/products/:pid/varieties`;
+  static logger = createLoggerModule(ProductVarietyController.path);
+  private repository: typeorm.Repository<ProductVariety>;
 
-  constructor() {
-    this.repository = dataSource.getRepository(productVarietyEntity);
+  constructor(connection: typeorm.DataSource) {
+    this.repository = connection.getRepository(productVarietyEntity);
   }
 
   public initRoutes(app: express.Application) {
-    app.route(`${this.path}`).get(this.getAll);
-    app.route(`${this.path}/:vid`).get(this.getOne);
+    app.route(`${ProductVarietyController.path}`).get(this.getAll);
+    app.route(`${ProductVarietyController.path}/:vid`).get(this.getOne);
   }
 
   private getAll = async (
@@ -71,23 +72,45 @@ export default class ProductVarietyController {
     }
   };
 
-  public addMany = async (
+  public static addMany = async (
     productVarieties: ProductVariety[],
-    transactionalEntityManager: EntityManager
+    transactionalEntityManager: typeorm.EntityManager
   ) => {
+    const logger = ProductVarietyController.logger.child({
+      function: "addMany",
+    });
     const productVarietyIds = (
-      await transactionalEntityManager.upsert(
-        productVarietyEntity,
-        productVarieties,
-        {
+      await transactionalEntityManager
+        .upsert(productVarietyEntity, productVarieties, {
           conflictPaths: { id_product_type: true, name: true },
           skipUpdateIfNoValuesChanged: true,
-        }
-      )
+        })
+        .catch((e) => {
+          logger.error(e, `upsert failed.`);
+          throw Error(e);
+        })
     ).identifiers;
 
-    return await transactionalEntityManager.find(productVarietyEntity, {
-      where: productVarietyIds,
-    });
+    logger.info(`upsert success.`);
+    logger.debug(
+      {
+        result: productVarietyIds,
+      },
+      `upsert result.`
+    );
+
+    const productVarietiesRes = await transactionalEntityManager
+      .find(productVarietyEntity, {
+        where: productVarietyIds,
+      })
+      .catch((e) => {
+        logger.error(e, `find failed.`);
+        throw Error(e);
+      });
+
+    logger.info(`find success.`);
+    logger.debug({ length: productVarietiesRes.length }, `find result.`);
+
+    return productVarietiesRes;
   };
 }

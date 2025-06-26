@@ -1,20 +1,21 @@
 import type express from "express";
-import type { EntityManager, Repository } from "typeorm";
-import dataSource from "../data-source";
+import type typeorm from "typeorm";
 import type ProductType from "../interfaces/product-type";
 import { productTypeEntity } from "../models/product-type";
+import createLoggerModule from "../utils/logger/loggerModule";
 
 export default class ProductTypeController {
-  public path = "/products";
-  private repository: Repository<ProductType>;
+  static path = "/products";
+  static logger = createLoggerModule(ProductTypeController.path);
+  private repository: typeorm.Repository<ProductType>;
 
-  constructor() {
-    this.repository = dataSource.getRepository(productTypeEntity);
+  constructor(connection: typeorm.DataSource) {
+    this.repository = connection.getRepository(productTypeEntity);
   }
 
   public initRoutes(app: express.Application) {
-    app.route(`${this.path}`).get(this.getAll);
-    app.route(`${this.path}/:id`).get(this.findOne);
+    app.route(`${ProductTypeController.path}`).get(this.getAll);
+    app.route(`${ProductTypeController.path}/:id`).get(this.findOne);
   }
 
   private getAll = async (
@@ -58,23 +59,47 @@ export default class ProductTypeController {
     }
   };
 
-  public addMany = async (
+  public static addMany = async (
     productTypes: ProductType[],
-    transactionalEntityManager: EntityManager
+    transactionalEntityManager: typeorm.EntityManager
   ) => {
+    const logger = ProductTypeController.logger.child({ function: "addMany" });
     const productTypeIds = (
-      await transactionalEntityManager.upsert(productTypeEntity, productTypes, {
-        conflictPaths: { name: true },
-        skipUpdateIfNoValuesChanged: true,
-      })
+      await transactionalEntityManager
+        .upsert(productTypeEntity, productTypes, {
+          conflictPaths: { name: true },
+          skipUpdateIfNoValuesChanged: true,
+        })
+        .catch((e) => {
+          logger.error(e, `upsert failed.`);
+          throw Error(e);
+        })
     ).identifiers;
 
-    return await transactionalEntityManager.find(productTypeEntity, {
-      where: productTypeIds,
-      select: {
-        id: true,
-        name: true,
+    logger.info(`upsert success.`);
+    logger.debug(
+      {
+        result: productTypeIds,
       },
-    });
+      `upsert result.`
+    );
+
+    const productTypesRes = await transactionalEntityManager
+      .find(productTypeEntity, {
+        where: productTypeIds,
+        select: {
+          id: true,
+          name: true,
+        },
+      })
+      .catch((e) => {
+        logger.error(e, `find failed.`);
+        throw Error(e);
+      });
+
+    logger.info(`find success.`);
+    logger.debug({ length: productTypesRes.length }, `find result.`);
+
+    return productTypesRes;
   };
 }

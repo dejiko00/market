@@ -1,20 +1,21 @@
 import type express from "express";
-import type { EntityManager, Repository } from "typeorm";
-import dataSource from "../data-source";
+import type typeorm from "typeorm";
 import type PriceHistory from "../interfaces/price-history";
 import { priceHistoryEntity } from "../models/price-history";
+import createLoggerModule from "../utils/logger/loggerModule";
 
 export default class PriceHistoryController {
-  path = "/prices";
-  private repository: Repository<PriceHistory>;
+  static path = "/prices";
+  static logger = createLoggerModule(PriceHistoryController.path);
+  private repository: typeorm.Repository<PriceHistory>;
 
-  constructor() {
-    this.repository = dataSource.getRepository(priceHistoryEntity);
+  constructor(connection: typeorm.DataSource) {
+    this.repository = connection.getRepository(priceHistoryEntity);
   }
 
   initRoutes(app: express.Application) {
-    app.route(`${this.path}`).get(this.getAll);
-    app.route(`${this.path}/:pvid`).get(this.getOne);
+    app.route(`${PriceHistoryController.path}`).get(this.getAll);
+    app.route(`${PriceHistoryController.path}/:pvid`).get(this.getOne);
   }
 
   private getAll = async (
@@ -49,20 +50,42 @@ export default class PriceHistoryController {
     }
   };
 
-  public addMany = async (
+  public static addMany = async (
     prices: PriceHistory[],
-    transactionalEntityManager: EntityManager
+    transactionalEntityManager: typeorm.EntityManager
   ) => {
-    console.log("prices", prices);
+    const logger = PriceHistoryController.logger.child({ function: "addMany" });
+
     const priceIds = (
-      await transactionalEntityManager.upsert(priceHistoryEntity, prices, {
-        skipUpdateIfNoValuesChanged: true,
-        conflictPaths: { date_price: true, id_product_variety: true },
-      })
+      await transactionalEntityManager
+        .upsert(priceHistoryEntity, prices, {
+          skipUpdateIfNoValuesChanged: true,
+          conflictPaths: { date_price: true, id_product_variety: true },
+        })
+        .catch((e) => {
+          logger.error(e, `upsert failed.`);
+          throw Error(e);
+        })
     ).identifiers;
 
-    return await transactionalEntityManager.find(priceHistoryEntity, {
-      where: priceIds,
-    });
+    logger.info(`upsert success.`);
+    logger.debug(
+      {
+        length: priceIds.length,
+      },
+      `upsert result.`
+    );
+
+    const pricesRes = await transactionalEntityManager.find(
+      priceHistoryEntity,
+      {
+        where: priceIds,
+      }
+    );
+
+    logger.info(`find success.`);
+    logger.debug({ length: pricesRes.length }, `find result.`);
+
+    return pricesRes;
   };
 }

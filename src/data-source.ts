@@ -17,6 +17,7 @@ const dataSource = new DataSource({
     encrypt: true,
   },
   logging: true,
+  logger: "file",
   entities: [productTypeEntity, productVarietyEntity, priceHistoryEntity],
   migrations: [],
   subscribers: [],
