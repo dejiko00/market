@@ -1,3 +1,4 @@
+import {} from "@mkt-lib/models";
 import { type ConnectionOptions, Queue, QueueEvents } from "bullmq";
 
 const connection: ConnectionOptions = { host: "localhost", port: 6379 };

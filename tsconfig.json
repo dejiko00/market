@@ -7,9 +7,10 @@
     "skipLibCheck": true,
     "moduleResolution": "node16",
     "noImplicitAny": true,
-    "rootDir": "src",
+    "rootDirs": ["src", "packages", "libs"],
     "outDir": "dist",
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true
+    "experimentalDecorators": true,
+    "composite": true
   }
 }
