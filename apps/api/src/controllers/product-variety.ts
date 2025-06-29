@@ -1,8 +1,7 @@
 import type express from "express";
 import type typeorm from "typeorm";
-import type ProductVariety from "../interfaces/product-variety";
-import { productVarietyEntity } from "../models/product-variety";
-import createLoggerModule from "../utils/logger/loggerModule";
+import createLoggerModule from "../utils/logger/loggerModule.js";
+import { ProductVariety, productVarietyEntity } from "models";
 
 export default class ProductVarietyController {
   static path = `/products/:pid/varieties`;

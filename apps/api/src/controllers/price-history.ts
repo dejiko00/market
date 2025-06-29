@@ -1,8 +1,7 @@
 import type express from "express";
 import type typeorm from "typeorm";
-import type PriceHistory from "../interfaces/price-history";
-import { priceHistoryEntity } from "../models/price-history";
-import createLoggerModule from "../utils/logger/loggerModule";
+import { PriceHistory, priceHistoryEntity } from "models";
+import createLoggerModule from "../utils/logger/loggerModule.js";
 
 export default class PriceHistoryController {
   static path = "/prices";

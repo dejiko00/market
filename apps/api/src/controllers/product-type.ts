@@ -1,8 +1,7 @@
 import type express from "express";
 import type typeorm from "typeorm";
-import type ProductType from "../interfaces/product-type";
-import { productTypeEntity } from "../models/product-type";
-import createLoggerModule from "../utils/logger/loggerModule";
+import createLoggerModule from "../utils/logger/loggerModule.js";
+import { ProductType, productTypeEntity } from "models";
 
 export default class ProductTypeController {
   static path = "/products";

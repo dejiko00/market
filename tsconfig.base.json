@@ -8,9 +8,8 @@
     "skipLibCheck": true,
     "noImplicitAny": true,
     "composite": true,
+    "allowSyntheticDefaultImports": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "rootDirs": ["src", "packages", "libs"],
-    "outDir": "dist"
+    "experimentalDecorators": true
   }
 }
