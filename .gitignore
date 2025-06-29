@@ -3,4 +3,6 @@ dist
 pnpm-lock.yaml
 logs/**/*.txt
 *.log
+.tsbuildinfo
+*.cache
 .vscode

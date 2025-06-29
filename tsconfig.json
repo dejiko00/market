@@ -2,15 +2,15 @@
   "compilerOptions": {
     "target": "esnext",
     "module": "nodenext",
+    "moduleResolution": "nodenext",
     "esModuleInterop": true,
     "strict": true,
     "skipLibCheck": true,
-    "moduleResolution": "node16",
     "noImplicitAny": true,
-    "rootDirs": ["src", "packages", "libs"],
-    "outDir": "dist",
+    "composite": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
-    "composite": true
+    "rootDirs": ["src", "packages", "libs"],
+    "outDir": "dist"
   }
 }

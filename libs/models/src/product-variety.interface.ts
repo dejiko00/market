@@ -1,4 +1,4 @@
-import type ProductType from "./product-type.interface";
+import type ProductType from "./product-type.interface.js";
 
 export default interface ProductVariety {
   id?: number;

@@ -1,5 +1,5 @@
 import { EntitySchema } from "typeorm";
-import type ProductType from "./product-type.interface";
+import type ProductType from "./product-type.interface.js";
 
 export const productTypeEntity = new EntitySchema<ProductType>({
   name: "productType",
