@@ -1,4 +1,3 @@
-import {} from "@mkt-lib/models";
 import { type ConnectionOptions, Queue, QueueEvents } from "bullmq";
 
 const connection: ConnectionOptions = { host: "localhost", port: 6379 };
@@ -13,11 +12,9 @@ queueEvents
     console.log(`${jobId} progress: ${data.toString()}`);
   });
 
-const initScheduler = async () => {
-  const job = await queue.upsertJobScheduler(EMMSA_URL, {
+export const initScheduler = async () => {
+  await queue.upsertJobScheduler("new", {
     every: 1000 * 5,
     limit: 2,
   });
 };
-
-initScheduler();

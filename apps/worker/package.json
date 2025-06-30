@@ -1,5 +1,5 @@
 {
-  "name": "scheduler",
+  "name": "worker",
   "version": "1.0.0",
   "type": "module",
   "main": "dist/server.js",
@@ -14,6 +14,11 @@
   "license": "ISC",
   "packageManager": "pnpm@10.12.3",
   "dependencies": {
-    "bullmq": "^5.56.0"
+    "bullmq": "^5.56.0",
+    "models": "workspace:*",
+    "pino": "^9.7.0",
+    "tough-cookie": "^5.1.2",
+    "typeorm": "^0.3.25",
+    "utils-log": "workspace:*"
   }
 }

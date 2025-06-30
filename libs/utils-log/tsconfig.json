@@ -1,0 +1,12 @@
+{
+  "extends": ["../../tsconfig.lib.json"],
+  "include": ["src/**/*.ts"],
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
+    "outDir": "dist",
+    "rootDir": "src",
+    "tsBuildInfoFile": "dist/.tsbuildinfo"
+  }
+}

@@ -1,4 +1,4 @@
-import { type ProductType } from "./product-type.interface.js";
+import { type ProductType } from "./product-type.js";
 
 export interface ProductVariety {
   id?: number;

@@ -1,11 +1,10 @@
-import { defineConfig } from "rollup";
-import nodeResolve from "@rollup/plugin-node-resolve";
 import commonjs from "@rollup/plugin-commonjs";
+import nodeResolve from "@rollup/plugin-node-resolve";
 import typescript from "@rollup/plugin-typescript";
-import json from "@rollup/plugin-json";
+import { defineConfig } from "rollup";
 
 export default defineConfig({
-  input: "src/server.ts",
+  input: "src/index.ts",
   output: {
     dir: "dist",
     format: "esm",
@@ -13,14 +12,10 @@ export default defineConfig({
     preserveModulesRoot: "src",
     sourcemap: true,
   },
-  watch: {},
-  external: ["typeorm", "pino", "pino-http"],
+  external: ["pino"],
   plugins: [
-    commonjs({}),
-    nodeResolve({
-      preferBuiltins: true,
-    }),
-    json(),
+    nodeResolve(),
+    commonjs(),
     typescript({
       tsconfig: "tsconfig.json",
     }),

@@ -4,9 +4,9 @@ import {
   priceHistoryEntity,
   productTypeEntity,
   productVarietyEntity,
-} from "models";
+} from "./entities/index.js";
 
-const dataSource = new DataSource({
+export const dataSource = new DataSource({
   type: "mssql",
   host: "localhost",
   port: Number(Env.MSSQL_TCP_PORT),
@@ -24,5 +24,3 @@ const dataSource = new DataSource({
   migrations: [],
   subscribers: [],
 });
-
-export default dataSource;

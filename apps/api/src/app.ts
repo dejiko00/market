@@ -1,16 +1,16 @@
 import express from "express";
-//import { pinoHttp } from "pino-http";
 import type typeorm from "typeorm";
 import PriceHistoryController from "./controllers/price-history.js";
 import ProductTypeController from "./controllers/product-type.js";
 import ProductVarietyController from "./controllers/product-variety.js";
-import dataSource from "./data-source.js";
-import Env from "./env.js";
-import { createRequire } from "node:module";
-const require = createRequire(import.meta.url);
-const pino = require("pino-http");
+import { dataSource } from "models";
+import Env from "./utils/env.js";
+import { pinoHttp } from "pino-http";
 
-//import pino = req
+//import { createRequire } from "node:module";
+
+//const require = createRequire(import.meta.url);
+//const pino = require("pino-http");
 
 export default class App {
   app: express.Application;
@@ -27,7 +27,7 @@ export default class App {
   }
 
   private initMiddleware() {
-    this.app.use(pino());
+    this.app.use(pinoHttp());
   }
 
   private async initDatabase() {

@@ -5,7 +5,7 @@
   "main": "dist/server.js",
   "type": "module",
   "scripts": {
-    "watch": "concurrently -k -p \"[{name}]\" -n \"Rollup,Node\" -c \"yellow.bold,green.bold\" \"npm run watch-roll\" \"npm run watch-node\"",
+    "watch": "concurrently -k -p \"[{name}]\" -n \"Rollup,Node\" -c \"yellow.bold,green.bold\" \"pnpm watch-roll\" \"pnpm watch-node\"",
     "watch-roll": "rollup -cw",
     "watch-node": "nodemon --delay 200ms --ext js --env-file=../../.env -w dist dist/server.js",
     "build": "rm -rf dist && rollup -c"
@@ -25,6 +25,7 @@
     "pino": "^9.7.0",
     "pino-http": "^10.5.0",
     "reflect-metadata": "^0.2.2",
-    "typeorm": "^0.3.25"
+    "typeorm": "^0.3.25",
+    "utils-log": "workspace:*"
   }
 }

@@ -6,7 +6,7 @@ import {
   URL_HEADERS,
   URL_RESPONSE,
   USER_AGENT,
-} from "./common";
+} from "./common.js";
 
 export const pull = async (): Promise<boolean> => {
   try {

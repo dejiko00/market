@@ -1,5 +1,5 @@
 import { EntitySchema } from "typeorm";
-import { PriceHistory } from "./price-history.interface.js";
+import { PriceHistory } from "../interfaces/price-history.js";
 
 export const priceHistoryEntity = new EntitySchema<PriceHistory>({
   name: "priceHistory",

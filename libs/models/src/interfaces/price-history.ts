@@ -1,4 +1,4 @@
-import { type ProductVariety } from "./product-variety.interface.js";
+import { type ProductVariety } from "./product-variety.js";
 
 export interface PriceHistory {
   id_product_variety: number;

@@ -14,7 +14,7 @@ export default defineConfig({
     sourcemap: true,
   },
   watch: {},
-  external: ["typeorm", "pino", "pino-http"],
+  external: ["bullmq"],
   plugins: [
     commonjs({}),
     nodeResolve({

@@ -1,8 +1,8 @@
-import { createRequire } from "node:module";
-import { type TransportTargetOptions } from "pino";
+//import { createRequire } from "node:module";
+import { type TransportTargetOptions, pino } from "pino";
 
-const require = createRequire(import.meta.url);
-const pino = require("pino");
+//const require = createRequire(import.meta.url);
+//const pino = require("pino");
 
 const PATH_LOGS_INFO = "./logs/dev.info.log";
 const PATH_LOGS_DEBUG = "./logs/dev.debug.log";
@@ -48,7 +48,7 @@ const transports: TransportConfig[] = [
   },
 ];
 
-const logger = pino(
+export const logger = pino(
   {
     level: "debug",
   },
@@ -57,5 +57,3 @@ const logger = pino(
     targets: transports.filter((t) => t.enabled),
   })
 );
-
-export default logger;
