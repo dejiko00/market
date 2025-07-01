@@ -1,16 +1,16 @@
+import { type ProductVariety, productVarietyEntity } from "models";
 import type typeorm from "typeorm";
 import { createLoggerModule } from "utils-log";
-import { ProductVariety, productVarietyEntity } from "models";
 
-export default class ProductVarietyController {
-  static path = `/products/:pid/varieties`;
-  static logger = createLoggerModule(ProductVarietyController.path);
+const path = `/products/:pid/varieties`;
+const logger = createLoggerModule(path);
 
-  public static addMany = async (
+export const ProductVarietyController = {
+  addMany: async (
     productVarieties: ProductVariety[],
     transactionalEntityManager: typeorm.EntityManager
   ) => {
-    const logger = ProductVarietyController.logger.child({
+    const loggerController = logger.child({
       function: "addMany",
     });
     const productVarietyIds = (
@@ -20,13 +20,13 @@ export default class ProductVarietyController {
           skipUpdateIfNoValuesChanged: true,
         })
         .catch((e) => {
-          logger.error(e, `upsert failed.`);
+          loggerController.error(e, `upsert failed.`);
           throw Error(e);
         })
     ).identifiers;
 
-    logger.info(`upsert success.`);
-    logger.debug(
+    loggerController.info(`upsert success.`);
+    loggerController.debug(
       {
         result: productVarietyIds,
       },
@@ -38,13 +38,16 @@ export default class ProductVarietyController {
         where: productVarietyIds,
       })
       .catch((e) => {
-        logger.error(e, `find failed.`);
+        loggerController.error(e, `find failed.`);
         throw Error(e);
       });
 
-    logger.info(`find success.`);
-    logger.debug({ length: productVarietiesRes.length }, `find result.`);
+    loggerController.info(`find success.`);
+    loggerController.debug(
+      { length: productVarietiesRes.length },
+      `find result.`
+    );
 
     return productVarietiesRes;
-  };
-}
+  },
+};

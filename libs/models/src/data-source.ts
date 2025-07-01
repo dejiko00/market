@@ -1,10 +1,10 @@
 import { DataSource } from "typeorm";
-import Env from "./env.js";
 import {
   priceHistoryEntity,
   productTypeEntity,
   productVarietyEntity,
 } from "./entities/index.js";
+import Env from "./env.js";
 
 export const dataSource = new DataSource({
   type: "mssql",

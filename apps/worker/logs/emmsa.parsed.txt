@@ -1,0 +1,142 @@
+Acelga, Acelga, 3.5, 4, 3.75
+Aji, Aji amarillo seco, 20, 24, 22
+Aji, Aji escabeche fresco/zanahor/liso, 2.4, 2.8, 2.55
+Aji, Aji montana/chan(costa/selva), 9, 11, 10.25
+Aji, Aji seco panca, 26, 34, 30.5
+Aji, Aji rocoto (costa/sierra/selva), 5, 6.11, 5.7
+Aji, Aji paprika, 20, 24, 21.75
+Ajo, Ajo pelado, 12, 14, 13.13
+Ajo, Ajo criollo o napuri, 8, 11.5, 9.63
+Ajo, Ajo morado/barran/legit/otros, 11.5, 16, 13.63
+Albahaca, Albahaca, 7.69, 9.23, 8.46
+Alcachofa, Alcachofa serrana/valle/quebrada/helada, 6, 6.75, 6.44
+Apio, Apio, 1.33, 1.67, 1.59
+Arveja, Arveja verde amer/mej/(criolla/serrana), 4.3, 7.5, 6.5
+Arveja, Arveja verde blanca serrana, 5.5, 7, 6.13
+Berenjena, Berenjena (criolla/serrana), 4, 7.2, 5.7
+Betarraga, Betarraga (criolla/serrana), 2.67, 3.33, 2.9
+Caigua, Caigua (selva), 2.33, 3, 2.63
+Calabaza, Calabaza (criolla/serrana), 1.38, 1.75, 1.54
+Camote, Camote amarillo/legit/jhonatan/2001/futu, 1.1, 1.3, 1.23
+Camote, Camote morado/leg/mila/mej/pepin/paramon, 1.6, 1.8, 1.73
+Cebolla, Cebolla cabeza blanca nacional, 1.5, 2, 1.73
+Cebolla, Cebolla cabeza roja/maj/tamb/loc/cam/mil, 1.8, 2, 1.9
+Cebolla, Cebolla china (criolla/serrana), 2, 2.5, 2.13
+Col, Col corazon/nene/(criolla/serrana), 0.8, 0.94, 0.88
+Coliflor, Coliflor (criolla/serrana), 0.8, 1, 0.88
+Culantro, Culantro (criollo/serrano), 3.67, 4.67, 4.09
+Choclo, Choclo serrano tipo cuzco, 2.86, 3.33, 3.07
+Esparrago, Esparrago/verde/blanco, 7, 10, 8.25
+Espinaca, Espinaca (criolla/serrana), 2, 3, 2.63
+Frejol, Frejol verde canario, 2.5, 3, 2.78
+Haba, Haba verde serrana, 1.6, 2.2, 1.95
+Hierbabuena, Hierba buena (criolla/serrana), 1.18, 1.76, 1.5
+Hortalizas chinas, Jolantau/organica, 6, 8, 6.88
+Hortalizas chinas, Col china/longapa, 2.5, 3.33, 3.02
+Hortalizas chinas, Pacchoy, 6.33, 7.17, 6.63
+Hortalizas chinas, Kion (costa/selva), 4.5, 5, 4.88
+Hortalizas chinas, Frejolito chino, 2.5, 3, 2.75
+Hortalizas chinas, Brocoli, 2, 3, 2.5
+Huacatay, Huacatay (criollo/serrano), 3.04, 3.48, 3.26
+Lechuga, Lechuga americana (criolla/serrana), 1.33, 1.67, 1.48
+Lechuga, Lechuga criolla seda, 2.67, 3, 2.79
+Lechuga, Lechuga serrana seda, 2.67, 3.33, 2.84
+Lechuga, Lechuga romana/hidrof./blanca/roja/org, 1, 1.33, 1.21
+Lenteja, Lenteja-verde/corriente, 2.5, 3, 2.83
+Lenteja, Lenteja-verde bocona/sarandaja, 3, 3, 3
+Limon, Limon citrico cajon, 2.39, 2.83, 2.61
+Limon, Limon citrico bolsa, 2.22, 2.67, 2.5
+Maiz, Maiz morado fresc/mojad/saraso/seco, 3, 3.8, 3.45
+Maiz, Marlo/coronta de maiz morado, 10, 12, 11.5
+Nabo, Nabo (criollo/serrano), 5, 6, 5.38
+Oregano, Oregano (criollo/serrano), 10, 10, 10
+Oregano, Oregano seco, 11, 14, 12.5
+Olluco, Olluco largo (sin lavar/lavado), 2.1, 2.5, 2.3
+Olluco, Olluco redondo (sin lavar/lavado), 1.2, 1.5, 1.35
+Pallar, Pallar verde serrucho/cachito, 3, 3.2, 3.08
+Papa, Papa amarilla, 2.5, 3.5, 2.85
+Papa, Papa blanca/valle/otros, 1.2, 1.45, 1.31
+Papa, Papa color/valle/otros, 1.45, 1.5, 1.48
+Papa, Papa huayro (rojo-moro-negro)runt/marh/u, 1.8, 2.2, 2
+Papa, Papa huamantanga, 2.5, 2.8, 2.63
+Papa, Papa negra andina, 1.2, 1.45, 1.31
+Papa, Papa peruanita (injerto), 2.2, 2.6, 2.37
+Papa, Papa yungay, 1.2, 1.5, 1.33
+Papa, Papa unica, 1, 1.3, 1.2
+Papa, Papa canchan, 1.4, 1.45, 1.41
+Pepinillo, Pepinillo, 0.83, 1.67, 1.33
+Perejil, Perejil nacional(criollo/serrano), 2, 3, 2.5
+Pimiento, Pimiento morron/injerto/ranger, 1.67, 2.22, 1.92
+Poro, Poro (criollo/serrano), 1.15, 1.54, 1.35
+Rabanito, Rabanito (criollo/serrano), 4.67, 6.67, 5.5
+Tomate, Tomate cherry, 5, 8, 6.17
+Tomate, Tomate organico, 2.5, 2.5, 2.5
+Tomate, Tomate katia, 2.05, 2.27, 2.14
+Vainita, Vainita americana/seda/pito/corrient/mad, 3.2, 4, 3.45
+Yuca, Yuca amarilla/legitimo (costa/selva), 2, 2.2, 2.1
+Zanahoria, Zanahoria (criolla/serrana), 1.45, 1.64, 1.55
+Zapallo, Zapallo italiano, 1.5, 1.67, 1.54
+Zapallo, Zapallo loche, 8, 10, 9.17
+Zapallo, Zapallo macre(costa/sierra/selva), 1.2, 1.4, 1.3
+Otros prod.agric., Ajonjoli, 10, 12, 11
+Otros prod.agric., Achiote, 10, 12, 11.33
+Otros prod.agric., Hierba luisa, 1.25, 1.5, 1.42
+Otros prod.agric., Manzanilla, 4, 6, 4.93
+Otros prod.agric., Anis fresco/verde (criolla/serrana), 7.5, 7.5, 7.5
+Otros prod.agric., Romero, 9, 10, 9.67
+Otros prod.agric., Toronjil, 5, 6, 5.33
+Otros prod.agric., Menta, 7.5, 7.5, 7.5
+Otros prod.agric., Hinojo sin fruto, 2.86, 2.86, 2.86
+Otros prod.agric., Cedron, 7, 7.5, 7.33
+Otros prod.agric., Alfalfa, 1.12, 1.32, 1.21
+Otros prod.agric., Yacon, 3, 3.5, 3.25
+Otros prod.agric., Aguaymanto, 4.5, 5, 4.75
+Otros prod.agric., Champi?ones, 5, 6, 5.38
+Otros prod.agric., Aceituna, 20, 26, 23
+Carambola, Carambola, 1.42, 1.5, 1.46
+Durazno, Durazno, 5, 7, 6
+Fresa, Fresa roja, 4.5, 6, 5.13
+Granadilla, Granadilla (selva), 5, 6, 5.38
+Pepino, Pepino rayado o melon, 5, 5.5, 5.38
+Pera, Pera de agua, 5, 6, 5.63
+Platanos, Platanos seda, 2.43, 2.79, 2.63
+Platanos, Platanos isla, 2.4, 3.5, 2.85
+Platanos, Platanos biscochito, 3, 3.5, 3.25
+Platanos, Platanos bellaco, 3.3, 4, 3.58
+Platanos, Platanos palillo, 3, 4.5, 3.63
+Mango, Mango criollo planta(costa), 3, 4, 3.5
+Mango, Mango haden/hayde, 2.5, 3, 2.67
+Mango, Mango kent(costa), 3.5, 4, 3.75
+Mango, Mango edward planta, 9, 10, 9.5
+Manzana, Manzana delicia(costa/sierra), 3.3, 4, 3.54
+Manzana, Manzana corriente para agua, 4.35, 4.7, 4.54
+Manzana, Manzana israel, 3.5, 5, 4.13
+Manzana, Manzana chilena roja, 8, 9, 8.75
+Manzana, Manzana chilena verde, 10, 10, 10
+Manzana, Manzana chilena fuji, 9, 10, 9.67
+Manzana, Manzana chilena royal, 8, 9, 8.63
+Manzana, Manzana golden, 4, 5, 4.63
+Maracuya, Maracuya (costa), 2, 2.5, 2.28
+Tuna, Tuna huarochiri, 3.5, 4, 3.83
+Sandia, Sandia, 2, 2, 2
+Cocona, Cocona selva, 3, 4, 3.63
+Naranja, Naranja valencia (selva), 1.14, 1.36, 1.26
+Naranja, Naranja huando, 5, 6, 5.25
+Pi?a, Pi?a hawayana, 2, 2.3, 2.2
+Pi?a, Pi?a golden, 1.89, 2.06, 1.97
+Palta, Palta hall (costa), 2.5, 4, 3.38
+Palta, Palta fuerte (costa), 4.5, 5, 4.75
+Papaya, Papaya selva, 2.38, 2.63, 2.5
+Membrillo, Membrillo, 4, 5, 4.5
+Otras frutas, Tamarindo(con cascara)costa, 6, 9, 7.5
+Otras frutas, Granada (costa), 5, 9, 7.38
+Otras frutas, Lima dulce (costa), 2, 3, 2.5
+Otras frutas, Lucuma, 8, 10, 8.75
+Otras frutas, Pitahaya, 14, 15, 14.5
+Otras frutas, Pacay, 6, 7.5, 6.63
+Otras frutas, Arandanos, 21, 28, 24.75
+Coco, Coco(costa/selva), 2, 2.33, 2.25
+Chirimoya, Chirimoya cumbe, 5, 6.5, 5.75
+Mandarina, Mandarina, 2.3, 3, 2.55
+Melon, Melon, 2.5, 2.8, 2.65
+Guanabana, Guanabana, 5, 6, 5.25

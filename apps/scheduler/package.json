@@ -4,8 +4,9 @@
   "type": "module",
   "main": "dist/server.js",
   "scripts": {
-    "build": "rm -rf dist && rollup -c",
-    "watch": "concurrently -k -p \"[{name}]\" -n \"Rollup,Node\" -c \"yellow.bold,green.bold\" \"pnpm watch-roll\" \"pnpm watch-node\"",
+    "build": "pnpm clean && rollup -c",
+    "watch": "pnpm build && concurrently -k -p \"[{name}]\" -n \"Rollup,Scheduler\" -c \"yellow.bold,green.bold\" \"pnpm watch-roll\" \"pnpm watch-node\"",
+    "clean": "rm -rf dist",
     "watch-roll": "rollup -cw",
     "watch-node": "nodemon --delay 200ms --ext js -w dist dist/server.js"
   },

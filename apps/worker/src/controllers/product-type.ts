@@ -1,16 +1,16 @@
+import { type ProductType, productTypeEntity } from "models";
 import type typeorm from "typeorm";
 import { createLoggerModule } from "utils-log";
-import { ProductType, productTypeEntity } from "models";
 
-export default class ProductTypeController {
-  static path = "/products";
-  static logger = createLoggerModule(ProductTypeController.path);
+const path = "/products";
+const logger = createLoggerModule(path);
 
-  public static addMany = async (
+export const ProductTypeController = {
+  addMany: async (
     productTypes: ProductType[],
     transactionalEntityManager: typeorm.EntityManager
   ) => {
-    const logger = ProductTypeController.logger.child({ function: "addMany" });
+    const loggerController = logger.child({ function: "addMany" });
     const productTypeIds = (
       await transactionalEntityManager
         .upsert(productTypeEntity, productTypes, {
@@ -18,13 +18,13 @@ export default class ProductTypeController {
           skipUpdateIfNoValuesChanged: true,
         })
         .catch((e) => {
-          logger.error(e, `upsert failed.`);
+          loggerController.error(e, `upsert failed.`);
           throw Error(e);
         })
     ).identifiers;
 
-    logger.info(`upsert success.`);
-    logger.debug(
+    loggerController.info(`upsert success.`);
+    loggerController.debug(
       {
         result: productTypeIds,
       },
@@ -40,13 +40,13 @@ export default class ProductTypeController {
         },
       })
       .catch((e) => {
-        logger.error(e, `find failed.`);
+        loggerController.error(e, `find failed.`);
         throw Error(e);
       });
 
-    logger.info(`find success.`);
-    logger.debug({ length: productTypesRes.length }, `find result.`);
+    loggerController.info(`find success.`);
+    loggerController.debug({ length: productTypesRes.length }, `find result.`);
 
     return productTypesRes;
-  };
-}
+  },
+};

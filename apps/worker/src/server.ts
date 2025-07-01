@@ -1,3 +1,6 @@
-import { newWorker } from "./worker.js";
+import { createWorker } from "./worker.js";
 
-newWorker();
+createWorker();
+process.on("beforeExit", () => {
+  console.log("exiting");
+});

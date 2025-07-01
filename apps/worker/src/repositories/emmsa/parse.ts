@@ -1,14 +1,18 @@
 import fs from "node:fs/promises";
-import type pino from "pino";
+import {
+  dataSource,
+  type PriceHistory,
+  type ProductType,
+  type ProductVariety,
+} from "models";
+import type { Logger, pino } from "pino";
 import type { EntityManager } from "typeorm";
-import { BASE_URL, URL_PARSED, URL_RESPONSE } from "./common.js";
-import { PriceHistory, ProductType, ProductVariety, dataSource } from "models";
-import textFix from "../../utils/textFix.js";
+import { PriceHistoryController } from "../../controllers/price-history.js";
+import { ProductTypeController } from "../../controllers/product-type.js";
+import { ProductVarietyController } from "../../controllers/product-variety.js";
 import extractAll from "../../utils/regex/extractAll.js";
-import { createLoggerModule } from "utils-log";
-import ProductVarietyController from "../../controllers/product-variety.js";
-import PriceHistoryController from "../../controllers/price-history.js";
-import ProductTypeController from "../../controllers/product-type.js";
+import textFix from "../../utils/textFix.js";
+import { connectionDatabase } from "../data-source.js";
 
 interface EmmsaRowProduct {
   type: string;
@@ -24,15 +28,27 @@ const COL_PRODUCT_MIN = 2;
 const COL_PRODUCT_MAX = 3;
 const COL_PRODUCT_AVG = 4;
 
-export const parse = async (date: Date) => {
-  const logger = createLoggerModule(BASE_URL).child({ date });
-  logger.info("beginning parse");
+interface ParseOptions {
+  date: Date;
+  logger: Logger;
+  pathLogResponse: string;
+  pathLogParse: string;
+}
 
-  const data = await fs.readFile(URL_RESPONSE).catch((e) => {
-    logger.error({ path: URL_RESPONSE, error: e }, `readFile failed.`);
+export const parse = async ({
+  date,
+  logger,
+  pathLogParse,
+  pathLogResponse,
+}: ParseOptions) => {
+  const data = await fs.readFile(pathLogResponse).catch((e) => {
+    logger.error(`readFile failed.`, { path: pathLogResponse, error: e });
     throw Error(e);
   });
-  logger.info({ path: URL_RESPONSE, length: data.length }, `readFile success.`);
+  logger.info(
+    { path: pathLogResponse, length: data.length },
+    `readFile success.`
+  );
 
   const rawGroupedProducts = await parseRawProducts(data.toString());
   const groupedProducts = rawGroupedProducts.reduce<
@@ -50,24 +66,22 @@ export const parse = async (date: Date) => {
     return acc;
   }, {});
 
-  await (
-    await dataSource.initialize()
-  )
+  await connectionDatabase
     .transaction((transactionalEntityManager) =>
       populateDatabase(
         date,
         groupedProducts,
         transactionalEntityManager,
-        logger
+        logger,
+        pathLogParse
       )
     )
     .catch((e) => {
-      logger.error({ error: e }, "transaction failed. Executing rollback...");
+      logger.error("Transaction failed. Executing rollback...", { error: e });
       throw Error(e);
     });
 
-  logger.info(`transaction success.`);
-  logger.info({}, `parse success.`);
+  logger.info(`Transaction success.`);
 };
 
 async function parseRawProducts(contents: string) {
@@ -82,7 +96,8 @@ async function populateDatabase(
   date: Date,
   groupedProducts: Record<string, EmmsaRowProduct[]>,
   transactionalEntityManager: EntityManager,
-  logger: pino.Logger
+  logger: pino.Logger,
+  pathLogParse: string
 ) {
   const productTypesMap = await populateProductTypes(
     date,
@@ -93,14 +108,14 @@ async function populateDatabase(
 
   await fs
     .writeFile(
-      URL_PARSED,
+      pathLogParse,
       products.map((v) => Object.values(v).join(", ")).join("\n")
     )
     .catch((e) => {
-      logger.error({ path: URL_PARSED, error: e }, `writeFile error`);
+      logger.error(`writeFile error`, { path: pathLogParse, error: e });
       throw Error(e);
     });
-  logger.info({ path: URL_PARSED }, `writeFile success`);
+  logger.info(`writeFile success`, { path: pathLogParse });
 
   const productVarietiesMap = await populateProductVarieties(
     date,

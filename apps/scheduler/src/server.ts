@@ -1,3 +1,5 @@
-import { initScheduler } from "./scheduler.js";
+import { Scheduler } from "./scheduler.js";
 
-initScheduler();
+const scheduler = new Scheduler("scraping-queue");
+await scheduler.listen();
+await scheduler.addJob("Daily");

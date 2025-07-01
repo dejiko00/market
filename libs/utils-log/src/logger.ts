@@ -1,5 +1,5 @@
 //import { createRequire } from "node:module";
-import { type TransportTargetOptions, pino } from "pino";
+import { pino, type TransportTargetOptions } from "pino";
 
 //const require = createRequire(import.meta.url);
 //const pino = require("pino");

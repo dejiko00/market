@@ -1,0 +1,1278 @@
+<style>
+<style type="text/css">
+body {
+    background-color: #f6f6ff;
+    font-family: Helvetica, Myriad;
+}
+
+#main {
+    width: 780px;
+    padding: 20px;
+    margin: auto;
+}
+
+table.timecard {
+    margin: auto;
+    width: 760px;
+    border-collapse: collapse;
+    border: 1px solid #fff; /*for older IE*/
+    border-style: hidden;
+}
+
+table.timecard caption {
+   
+    color: #fff;
+    font-size: x-large;
+    font-weight: bold;
+    letter-spacing: .3em;
+}
+
+table.timecard thead th {
+    padding: 8px; 
+    font-size: 16px;
+    color: #FFFFFF;
+    text-align: center; 
+    font-family:Arial;
+}
+
+table.timecard thead th#thDay {
+    width: 40%;
+
+}
+
+table.timecard thead th#thRegular, table.timecard thead th#thOvertime, table.timecard thead th#thTotal {
+    width: 20%;
+}
+
+table.timecard th, table.timecard td {
+    padding: 3px;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #C8C8C8 #F3F3F3;
+    color: #000000;
+    background-color: #F3F3F3;
+    font-size: 13px;
+    text-align: center; 
+    font-family:Helvetica;
+}
+
+table.timecard td {
+    text-align: center; 
+    font-family:Helvetica;
+}
+
+ table.timecard div-1 {
+        background-color: #00A19B;
+}
+
+table.timecard tbody th {
+    text-align: left;
+    font-weight: normal;
+    border-color: #00A19B;   
+  
+}
+
+table.timecard tfoot {
+    font-weight: bold;
+    font-size: large;
+   
+    color: #fff;
+}
+
+table.timecard tr.even {
+
+
+
+}
+</style>
+
+﻿
+        <table class='timecard'>
+                  <thead>
+ <tr>
+                        <th style='background-color: #014A81;' rowspan='2' width= 110px>Producto</th>
+                        <th style='background-color: #014A81;' rowspan='2' width= 260px;>Variedad</th>
+                        <th style='background-color: #00A19B;' colspan='3'>Precios x Kg en S/ </th>
+                    </tr>
+                    <tr>
+                        <th style='background-color: #014A81;'>Precio Min.</th>
+                        <th style='background-color: #014A81;'>Precio Max.</th>
+                        <th style='background-color: #014A81;'>Precio Prom.</th>
+                    </tr>
+</thead>
+<tfoot>
+<tr>
+<td colspan='4'>
+</td>
+</tr>
+</tfoot>
+<tbody>
+        
+                    <tr>
+                        <td>ACELGA</td>
+                        <td>ACELGA</td>
+                        <td>3.50</td>
+                        <td>4.00</td>
+                        <td>3.75</td>
+                    </tr>
+            
+                    <tr>
+                        <td>AJI               </td>
+                        <td>AJI AMARILLO SECO</td>
+                        <td>20.00</td>
+                        <td>24.00</td>
+                        <td>22.00</td>
+                    </tr>
+            
+                    <tr>
+                        <td>AJI               </td>
+                        <td>AJI ESCABECHE FRESCO/ZANAHOR/LISO</td>
+                        <td>2.40</td>
+                        <td>2.80</td>
+                        <td>2.55</td>
+                    </tr>
+            
+                    <tr>
+                        <td>AJI               </td>
+                        <td>AJI MONTANA/CHAN(COSTA/SELVA)</td>
+                        <td>9.00</td>
+                        <td>11.00</td>
+                        <td>10.25</td>
+                    </tr>
+            
+                    <tr>
+                        <td>AJI               </td>
+                        <td>AJI SECO PANCA</td>
+                        <td>26.00</td>
+                        <td>34.00</td>
+                        <td>30.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>AJI               </td>
+                        <td>AJI ROCOTO (COSTA/SIERRA/SELVA)</td>
+                        <td>5.00</td>
+                        <td>6.11</td>
+                        <td>5.70</td>
+                    </tr>
+            
+                    <tr>
+                        <td>AJI               </td>
+                        <td>AJI PAPRIKA</td>
+                        <td>20.00</td>
+                        <td>24.00</td>
+                        <td>21.75</td>
+                    </tr>
+            
+                    <tr>
+                        <td>AJO               </td>
+                        <td>AJO PELADO</td>
+                        <td>12.00</td>
+                        <td>14.00</td>
+                        <td>13.13</td>
+                    </tr>
+            
+                    <tr>
+                        <td>AJO               </td>
+                        <td>AJO CRIOLLO O NAPURI</td>
+                        <td>8.00</td>
+                        <td>11.50</td>
+                        <td>9.63</td>
+                    </tr>
+            
+                    <tr>
+                        <td>AJO               </td>
+                        <td>AJO MORADO/BARRAN/LEGIT/OTROS</td>
+                        <td>11.50</td>
+                        <td>16.00</td>
+                        <td>13.63</td>
+                    </tr>
+            
+                    <tr>
+                        <td>ALBAHACA  </td>
+                        <td>ALBAHACA</td>
+                        <td>7.69</td>
+                        <td>9.23</td>
+                        <td>8.46</td>
+                    </tr>
+            
+                    <tr>
+                        <td>ALCACHOFA         </td>
+                        <td>ALCACHOFA SERRANA/VALLE/QUEBRADA/HELADA</td>
+                        <td>6.00</td>
+                        <td>6.75</td>
+                        <td>6.44</td>
+                    </tr>
+            
+                    <tr>
+                        <td>APIO              </td>
+                        <td>APIO</td>
+                        <td>1.33</td>
+                        <td>1.67</td>
+                        <td>1.59</td>
+                    </tr>
+            
+                    <tr>
+                        <td>ARVEJA            </td>
+                        <td>ARVEJA VERDE AMER/MEJ/(CRIOLLA/SERRANA)</td>
+                        <td>4.30</td>
+                        <td>7.50</td>
+                        <td>6.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>ARVEJA            </td>
+                        <td>ARVEJA VERDE BLANCA SERRANA</td>
+                        <td>5.50</td>
+                        <td>7.00</td>
+                        <td>6.13</td>
+                    </tr>
+            
+                    <tr>
+                        <td>BERENJENA         </td>
+                        <td>BERENJENA (CRIOLLA/SERRANA)</td>
+                        <td>4.00</td>
+                        <td>7.20</td>
+                        <td>5.70</td>
+                    </tr>
+            
+                    <tr>
+                        <td>BETARRAGA         </td>
+                        <td>BETARRAGA (CRIOLLA/SERRANA)</td>
+                        <td>2.67</td>
+                        <td>3.33</td>
+                        <td>2.90</td>
+                    </tr>
+            
+                    <tr>
+                        <td>CAIGUA            </td>
+                        <td>CAIGUA (SELVA)</td>
+                        <td>2.33</td>
+                        <td>3.00</td>
+                        <td>2.63</td>
+                    </tr>
+            
+                    <tr>
+                        <td>CALABAZA          </td>
+                        <td>CALABAZA (CRIOLLA/SERRANA)</td>
+                        <td>1.38</td>
+                        <td>1.75</td>
+                        <td>1.54</td>
+                    </tr>
+            
+                    <tr>
+                        <td>CAMOTE            </td>
+                        <td>CAMOTE AMARILLO/LEGIT/JHONATAN/2001/FUTU</td>
+                        <td>1.10</td>
+                        <td>1.30</td>
+                        <td>1.23</td>
+                    </tr>
+            
+                    <tr>
+                        <td>CAMOTE            </td>
+                        <td>CAMOTE MORADO/LEG/MILA/MEJ/PEPIN/PARAMON</td>
+                        <td>1.60</td>
+                        <td>1.80</td>
+                        <td>1.73</td>
+                    </tr>
+            
+                    <tr>
+                        <td>CEBOLLA           </td>
+                        <td>CEBOLLA CABEZA BLANCA NACIONAL</td>
+                        <td>1.50</td>
+                        <td>2.00</td>
+                        <td>1.73</td>
+                    </tr>
+            
+                    <tr>
+                        <td>CEBOLLA           </td>
+                        <td>CEBOLLA CABEZA ROJA/MAJ/TAMB/LOC/CAM/MIL</td>
+                        <td>1.80</td>
+                        <td>2.00</td>
+                        <td>1.90</td>
+                    </tr>
+            
+                    <tr>
+                        <td>CEBOLLA           </td>
+                        <td>CEBOLLA CHINA (CRIOLLA/SERRANA)</td>
+                        <td>2.00</td>
+                        <td>2.50</td>
+                        <td>2.13</td>
+                    </tr>
+            
+                    <tr>
+                        <td>COL               </td>
+                        <td>COL CORAZON/NENE/(CRIOLLA/SERRANA)</td>
+                        <td>0.80</td>
+                        <td>0.94</td>
+                        <td>0.88</td>
+                    </tr>
+            
+                    <tr>
+                        <td>COLIFLOR          </td>
+                        <td>COLIFLOR (CRIOLLA/SERRANA)</td>
+                        <td>0.80</td>
+                        <td>1.00</td>
+                        <td>0.88</td>
+                    </tr>
+            
+                    <tr>
+                        <td>CULANTRO          </td>
+                        <td>CULANTRO (CRIOLLO/SERRANO)</td>
+                        <td>3.67</td>
+                        <td>4.67</td>
+                        <td>4.09</td>
+                    </tr>
+            
+                    <tr>
+                        <td>CHOCLO            </td>
+                        <td>CHOCLO SERRANO TIPO CUZCO</td>
+                        <td>2.86</td>
+                        <td>3.33</td>
+                        <td>3.07</td>
+                    </tr>
+            
+                    <tr>
+                        <td>ESPARRAGO         </td>
+                        <td>ESPARRAGO/VERDE/BLANCO</td>
+                        <td>7.00</td>
+                        <td>10.00</td>
+                        <td>8.25</td>
+                    </tr>
+            
+                    <tr>
+                        <td>ESPINACA          </td>
+                        <td>ESPINACA (CRIOLLA/SERRANA)</td>
+                        <td>2.00</td>
+                        <td>3.00</td>
+                        <td>2.63</td>
+                    </tr>
+            
+                    <tr>
+                        <td>FREJOL            </td>
+                        <td>FREJOL VERDE CANARIO</td>
+                        <td>2.50</td>
+                        <td>3.00</td>
+                        <td>2.78</td>
+                    </tr>
+            
+                    <tr>
+                        <td>HABA              </td>
+                        <td>HABA VERDE SERRANA</td>
+                        <td>1.60</td>
+                        <td>2.20</td>
+                        <td>1.95</td>
+                    </tr>
+            
+                    <tr>
+                        <td>HIERBABUENA      </td>
+                        <td>HIERBA BUENA (CRIOLLA/SERRANA)</td>
+                        <td>1.18</td>
+                        <td>1.76</td>
+                        <td>1.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>HORTALIZAS CHINAS </td>
+                        <td>JOLANTAU/ORGANICA</td>
+                        <td>6.00</td>
+                        <td>8.00</td>
+                        <td>6.88</td>
+                    </tr>
+            
+                    <tr>
+                        <td>HORTALIZAS CHINAS </td>
+                        <td>COL CHINA/LONGAPA</td>
+                        <td>2.50</td>
+                        <td>3.33</td>
+                        <td>3.02</td>
+                    </tr>
+            
+                    <tr>
+                        <td>HORTALIZAS CHINAS </td>
+                        <td>PACCHOY</td>
+                        <td>6.33</td>
+                        <td>7.17</td>
+                        <td>6.63</td>
+                    </tr>
+            
+                    <tr>
+                        <td>HORTALIZAS CHINAS </td>
+                        <td>KION (COSTA/SELVA)</td>
+                        <td>4.50</td>
+                        <td>5.00</td>
+                        <td>4.88</td>
+                    </tr>
+            
+                    <tr>
+                        <td>HORTALIZAS CHINAS </td>
+                        <td>FREJOLITO CHINO</td>
+                        <td>2.50</td>
+                        <td>3.00</td>
+                        <td>2.75</td>
+                    </tr>
+            
+                    <tr>
+                        <td>HORTALIZAS CHINAS </td>
+                        <td>BROCOLI</td>
+                        <td>2.00</td>
+                        <td>3.00</td>
+                        <td>2.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>HUACATAY          </td>
+                        <td>HUACATAY (CRIOLLO/SERRANO)</td>
+                        <td>3.04</td>
+                        <td>3.48</td>
+                        <td>3.26</td>
+                    </tr>
+            
+                    <tr>
+                        <td>LECHUGA           </td>
+                        <td>LECHUGA AMERICANA (CRIOLLA/SERRANA)</td>
+                        <td>1.33</td>
+                        <td>1.67</td>
+                        <td>1.48</td>
+                    </tr>
+            
+                    <tr>
+                        <td>LECHUGA           </td>
+                        <td>LECHUGA CRIOLLA SEDA</td>
+                        <td>2.67</td>
+                        <td>3.00</td>
+                        <td>2.79</td>
+                    </tr>
+            
+                    <tr>
+                        <td>LECHUGA           </td>
+                        <td>LECHUGA SERRANA SEDA</td>
+                        <td>2.67</td>
+                        <td>3.33</td>
+                        <td>2.84</td>
+                    </tr>
+            
+                    <tr>
+                        <td>LECHUGA           </td>
+                        <td>LECHUGA ROMANA/HIDROF./BLANCA/ROJA/ORG</td>
+                        <td>1.00</td>
+                        <td>1.33</td>
+                        <td>1.21</td>
+                    </tr>
+            
+                    <tr>
+                        <td>LENTEJA           </td>
+                        <td>LENTEJA-VERDE/CORRIENTE</td>
+                        <td>2.50</td>
+                        <td>3.00</td>
+                        <td>2.83</td>
+                    </tr>
+            
+                    <tr>
+                        <td>LENTEJA           </td>
+                        <td>LENTEJA-VERDE BOCONA/SARANDAJA</td>
+                        <td>3.00</td>
+                        <td>3.00</td>
+                        <td>3.00</td>
+                    </tr>
+            
+                    <tr>
+                        <td>LIMON             </td>
+                        <td>LIMON CITRICO CAJON</td>
+                        <td>2.39</td>
+                        <td>2.83</td>
+                        <td>2.61</td>
+                    </tr>
+            
+                    <tr>
+                        <td>LIMON             </td>
+                        <td>LIMON CITRICO BOLSA</td>
+                        <td>2.22</td>
+                        <td>2.67</td>
+                        <td>2.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MAIZ              </td>
+                        <td>MAIZ MORADO FRESC/MOJAD/SARASO/SECO</td>
+                        <td>3.00</td>
+                        <td>3.80</td>
+                        <td>3.45</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MAIZ              </td>
+                        <td>MARLO/CORONTA DE MAIZ MORADO</td>
+                        <td>10.00</td>
+                        <td>12.00</td>
+                        <td>11.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>NABO              </td>
+                        <td>NABO (CRIOLLO/SERRANO)</td>
+                        <td>5.00</td>
+                        <td>6.00</td>
+                        <td>5.38</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OREGANO           </td>
+                        <td>OREGANO (CRIOLLO/SERRANO)</td>
+                        <td>10.00</td>
+                        <td>10.00</td>
+                        <td>10.00</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OREGANO           </td>
+                        <td>OREGANO SECO</td>
+                        <td>11.00</td>
+                        <td>14.00</td>
+                        <td>12.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OLLUCO            </td>
+                        <td>OLLUCO LARGO (SIN LAVAR/LAVADO)</td>
+                        <td>2.10</td>
+                        <td>2.50</td>
+                        <td>2.30</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OLLUCO            </td>
+                        <td>OLLUCO REDONDO (SIN LAVAR/LAVADO)</td>
+                        <td>1.20</td>
+                        <td>1.50</td>
+                        <td>1.35</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PALLAR            </td>
+                        <td>PALLAR VERDE SERRUCHO/CACHITO</td>
+                        <td>3.00</td>
+                        <td>3.20</td>
+                        <td>3.08</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PAPA              </td>
+                        <td>PAPA AMARILLA</td>
+                        <td>2.50</td>
+                        <td>3.50</td>
+                        <td>2.85</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PAPA              </td>
+                        <td>PAPA BLANCA/VALLE/OTROS</td>
+                        <td>1.20</td>
+                        <td>1.45</td>
+                        <td>1.31</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PAPA              </td>
+                        <td>PAPA COLOR/VALLE/OTROS</td>
+                        <td>1.45</td>
+                        <td>1.50</td>
+                        <td>1.48</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PAPA              </td>
+                        <td>PAPA HUAYRO (ROJO-MORO-NEGRO)RUNT/MARH/U</td>
+                        <td>1.80</td>
+                        <td>2.20</td>
+                        <td>2.00</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PAPA              </td>
+                        <td>PAPA HUAMANTANGA</td>
+                        <td>2.50</td>
+                        <td>2.80</td>
+                        <td>2.63</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PAPA              </td>
+                        <td>PAPA NEGRA ANDINA</td>
+                        <td>1.20</td>
+                        <td>1.45</td>
+                        <td>1.31</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PAPA              </td>
+                        <td>PAPA PERUANITA (INJERTO)</td>
+                        <td>2.20</td>
+                        <td>2.60</td>
+                        <td>2.37</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PAPA              </td>
+                        <td>PAPA YUNGAY</td>
+                        <td>1.20</td>
+                        <td>1.50</td>
+                        <td>1.33</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PAPA              </td>
+                        <td>PAPA UNICA</td>
+                        <td>1.00</td>
+                        <td>1.30</td>
+                        <td>1.20</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PAPA              </td>
+                        <td>PAPA CANCHAN</td>
+                        <td>1.40</td>
+                        <td>1.45</td>
+                        <td>1.41</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PEPINILLO         </td>
+                        <td>PEPINILLO</td>
+                        <td>0.83</td>
+                        <td>1.67</td>
+                        <td>1.33</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PEREJIL           </td>
+                        <td>PEREJIL NACIONAL(CRIOLLO/SERRANO)</td>
+                        <td>2.00</td>
+                        <td>3.00</td>
+                        <td>2.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PIMIENTO          </td>
+                        <td>PIMIENTO MORRON/INJERTO/RANGER</td>
+                        <td>1.67</td>
+                        <td>2.22</td>
+                        <td>1.92</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PORO              </td>
+                        <td>PORO (CRIOLLO/SERRANO)</td>
+                        <td>1.15</td>
+                        <td>1.54</td>
+                        <td>1.35</td>
+                    </tr>
+            
+                    <tr>
+                        <td>RABANITO          </td>
+                        <td>RABANITO (CRIOLLO/SERRANO)</td>
+                        <td>4.67</td>
+                        <td>6.67</td>
+                        <td>5.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>TOMATE            </td>
+                        <td>TOMATE CHERRY</td>
+                        <td>5.00</td>
+                        <td>8.00</td>
+                        <td>6.17</td>
+                    </tr>
+            
+                    <tr>
+                        <td>TOMATE            </td>
+                        <td>TOMATE ORGANICO</td>
+                        <td>2.50</td>
+                        <td>2.50</td>
+                        <td>2.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>TOMATE            </td>
+                        <td>TOMATE KATIA</td>
+                        <td>2.05</td>
+                        <td>2.27</td>
+                        <td>2.14</td>
+                    </tr>
+            
+                    <tr>
+                        <td>VAINITA           </td>
+                        <td>VAINITA AMERICANA/SEDA/PITO/CORRIENT/MAD</td>
+                        <td>3.20</td>
+                        <td>4.00</td>
+                        <td>3.45</td>
+                    </tr>
+            
+                    <tr>
+                        <td>YUCA              </td>
+                        <td>YUCA AMARILLA/LEGITIMO (COSTA/SELVA)</td>
+                        <td>2.00</td>
+                        <td>2.20</td>
+                        <td>2.10</td>
+                    </tr>
+            
+                    <tr>
+                        <td>ZANAHORIA         </td>
+                        <td>ZANAHORIA (CRIOLLA/SERRANA)</td>
+                        <td>1.45</td>
+                        <td>1.64</td>
+                        <td>1.55</td>
+                    </tr>
+            
+                    <tr>
+                        <td>ZAPALLO           </td>
+                        <td>ZAPALLO ITALIANO</td>
+                        <td>1.50</td>
+                        <td>1.67</td>
+                        <td>1.54</td>
+                    </tr>
+            
+                    <tr>
+                        <td>ZAPALLO           </td>
+                        <td>ZAPALLO LOCHE</td>
+                        <td>8.00</td>
+                        <td>10.00</td>
+                        <td>9.17</td>
+                    </tr>
+            
+                    <tr>
+                        <td>ZAPALLO           </td>
+                        <td>ZAPALLO MACRE(COSTA/SIERRA/SELVA)</td>
+                        <td>1.20</td>
+                        <td>1.40</td>
+                        <td>1.30</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTROS  PROD.AGRIC.         </td>
+                        <td>AJONJOLI</td>
+                        <td>10.00</td>
+                        <td>12.00</td>
+                        <td>11.00</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTROS  PROD.AGRIC.         </td>
+                        <td>ACHIOTE</td>
+                        <td>10.00</td>
+                        <td>12.00</td>
+                        <td>11.33</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTROS  PROD.AGRIC.         </td>
+                        <td>HIERBA LUISA</td>
+                        <td>1.25</td>
+                        <td>1.50</td>
+                        <td>1.42</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTROS  PROD.AGRIC.         </td>
+                        <td>MANZANILLA</td>
+                        <td>4.00</td>
+                        <td>6.00</td>
+                        <td>4.93</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTROS  PROD.AGRIC.         </td>
+                        <td>ANIS FRESCO/VERDE (CRIOLLA/SERRANA)</td>
+                        <td>7.50</td>
+                        <td>7.50</td>
+                        <td>7.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTROS  PROD.AGRIC.         </td>
+                        <td>ROMERO</td>
+                        <td>9.00</td>
+                        <td>10.00</td>
+                        <td>9.67</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTROS  PROD.AGRIC.         </td>
+                        <td>TORONJIL</td>
+                        <td>5.00</td>
+                        <td>6.00</td>
+                        <td>5.33</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTROS  PROD.AGRIC.         </td>
+                        <td>MENTA</td>
+                        <td>7.50</td>
+                        <td>7.50</td>
+                        <td>7.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTROS  PROD.AGRIC.         </td>
+                        <td>HINOJO SIN FRUTO</td>
+                        <td>2.86</td>
+                        <td>2.86</td>
+                        <td>2.86</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTROS  PROD.AGRIC.         </td>
+                        <td>CEDRON</td>
+                        <td>7.00</td>
+                        <td>7.50</td>
+                        <td>7.33</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTROS  PROD.AGRIC.         </td>
+                        <td>ALFALFA</td>
+                        <td>1.12</td>
+                        <td>1.32</td>
+                        <td>1.21</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTROS  PROD.AGRIC.         </td>
+                        <td>YACON</td>
+                        <td>3.00</td>
+                        <td>3.50</td>
+                        <td>3.25</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTROS  PROD.AGRIC.         </td>
+                        <td>AGUAYMANTO</td>
+                        <td>4.50</td>
+                        <td>5.00</td>
+                        <td>4.75</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTROS  PROD.AGRIC.         </td>
+                        <td>CHAMPI?ONES</td>
+                        <td>5.00</td>
+                        <td>6.00</td>
+                        <td>5.38</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTROS  PROD.AGRIC.         </td>
+                        <td>ACEITUNA</td>
+                        <td>20.00</td>
+                        <td>26.00</td>
+                        <td>23.00</td>
+                    </tr>
+            
+                    <tr>
+                        <td>CARAMBOLA</td>
+                        <td>CARAMBOLA</td>
+                        <td>1.42</td>
+                        <td>1.50</td>
+                        <td>1.46</td>
+                    </tr>
+            
+                    <tr>
+                        <td>DURAZNO</td>
+                        <td>DURAZNO</td>
+                        <td>5.00</td>
+                        <td>7.00</td>
+                        <td>6.00</td>
+                    </tr>
+            
+                    <tr>
+                        <td>FRESA</td>
+                        <td>FRESA ROJA</td>
+                        <td>4.50</td>
+                        <td>6.00</td>
+                        <td>5.13</td>
+                    </tr>
+            
+                    <tr>
+                        <td>GRANADILLA        </td>
+                        <td>GRANADILLA (SELVA)</td>
+                        <td>5.00</td>
+                        <td>6.00</td>
+                        <td>5.38</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PEPINO</td>
+                        <td>PEPINO RAYADO O MELON</td>
+                        <td>5.00</td>
+                        <td>5.50</td>
+                        <td>5.38</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PERA</td>
+                        <td>PERA DE AGUA</td>
+                        <td>5.00</td>
+                        <td>6.00</td>
+                        <td>5.63</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PLATANOS</td>
+                        <td>PLATANOS SEDA</td>
+                        <td>2.43</td>
+                        <td>2.79</td>
+                        <td>2.63</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PLATANOS</td>
+                        <td>PLATANOS ISLA</td>
+                        <td>2.40</td>
+                        <td>3.50</td>
+                        <td>2.85</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PLATANOS</td>
+                        <td>PLATANOS BISCOCHITO</td>
+                        <td>3.00</td>
+                        <td>3.50</td>
+                        <td>3.25</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PLATANOS</td>
+                        <td>PLATANOS BELLACO</td>
+                        <td>3.30</td>
+                        <td>4.00</td>
+                        <td>3.58</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PLATANOS</td>
+                        <td>PLATANOS PALILLO</td>
+                        <td>3.00</td>
+                        <td>4.50</td>
+                        <td>3.63</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MANGO             </td>
+                        <td>MANGO CRIOLLO PLANTA(COSTA)</td>
+                        <td>3.00</td>
+                        <td>4.00</td>
+                        <td>3.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MANGO             </td>
+                        <td>MANGO HADEN/HAYDE</td>
+                        <td>2.50</td>
+                        <td>3.00</td>
+                        <td>2.67</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MANGO             </td>
+                        <td>MANGO KENT(COSTA)</td>
+                        <td>3.50</td>
+                        <td>4.00</td>
+                        <td>3.75</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MANGO             </td>
+                        <td>MANGO EDWARD PLANTA</td>
+                        <td>9.00</td>
+                        <td>10.00</td>
+                        <td>9.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MANZANA           </td>
+                        <td>MANZANA DELICIA(COSTA/SIERRA)</td>
+                        <td>3.30</td>
+                        <td>4.00</td>
+                        <td>3.54</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MANZANA           </td>
+                        <td>MANZANA CORRIENTE PARA AGUA</td>
+                        <td>4.35</td>
+                        <td>4.70</td>
+                        <td>4.54</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MANZANA           </td>
+                        <td>MANZANA ISRAEL</td>
+                        <td>3.50</td>
+                        <td>5.00</td>
+                        <td>4.13</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MANZANA           </td>
+                        <td>MANZANA CHILENA ROJA</td>
+                        <td>8.00</td>
+                        <td>9.00</td>
+                        <td>8.75</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MANZANA           </td>
+                        <td>MANZANA CHILENA VERDE</td>
+                        <td>10.00</td>
+                        <td>10.00</td>
+                        <td>10.00</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MANZANA           </td>
+                        <td>MANZANA CHILENA FUJI</td>
+                        <td>9.00</td>
+                        <td>10.00</td>
+                        <td>9.67</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MANZANA           </td>
+                        <td>MANZANA CHILENA ROYAL</td>
+                        <td>8.00</td>
+                        <td>9.00</td>
+                        <td>8.63</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MANZANA           </td>
+                        <td>MANZANA GOLDEN</td>
+                        <td>4.00</td>
+                        <td>5.00</td>
+                        <td>4.63</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MARACUYA          </td>
+                        <td>MARACUYA (COSTA)</td>
+                        <td>2.00</td>
+                        <td>2.50</td>
+                        <td>2.28</td>
+                    </tr>
+            
+                    <tr>
+                        <td>TUNA</td>
+                        <td>TUNA HUAROCHIRI</td>
+                        <td>3.50</td>
+                        <td>4.00</td>
+                        <td>3.83</td>
+                    </tr>
+            
+                    <tr>
+                        <td>SANDIA</td>
+                        <td>SANDIA</td>
+                        <td>2.00</td>
+                        <td>2.00</td>
+                        <td>2.00</td>
+                    </tr>
+            
+                    <tr>
+                        <td>COCONA</td>
+                        <td>COCONA SELVA</td>
+                        <td>3.00</td>
+                        <td>4.00</td>
+                        <td>3.63</td>
+                    </tr>
+            
+                    <tr>
+                        <td>NARANJA           </td>
+                        <td>NARANJA VALENCIA (SELVA)</td>
+                        <td>1.14</td>
+                        <td>1.36</td>
+                        <td>1.26</td>
+                    </tr>
+            
+                    <tr>
+                        <td>NARANJA           </td>
+                        <td>NARANJA HUANDO</td>
+                        <td>5.00</td>
+                        <td>6.00</td>
+                        <td>5.25</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PI?A</td>
+                        <td>PI?A HAWAYANA</td>
+                        <td>2.00</td>
+                        <td>2.30</td>
+                        <td>2.20</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PI?A</td>
+                        <td>PI?A GOLDEN</td>
+                        <td>1.89</td>
+                        <td>2.06</td>
+                        <td>1.97</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PALTA             </td>
+                        <td>PALTA HALL (COSTA)</td>
+                        <td>2.50</td>
+                        <td>4.00</td>
+                        <td>3.38</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PALTA             </td>
+                        <td>PALTA FUERTE (COSTA)</td>
+                        <td>4.50</td>
+                        <td>5.00</td>
+                        <td>4.75</td>
+                    </tr>
+            
+                    <tr>
+                        <td>PAPAYA            </td>
+                        <td>PAPAYA SELVA</td>
+                        <td>2.38</td>
+                        <td>2.63</td>
+                        <td>2.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MEMBRILLO</td>
+                        <td>MEMBRILLO</td>
+                        <td>4.00</td>
+                        <td>5.00</td>
+                        <td>4.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTRAS  FRUTAS</td>
+                        <td>TAMARINDO(CON CASCARA)COSTA</td>
+                        <td>6.00</td>
+                        <td>9.00</td>
+                        <td>7.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTRAS  FRUTAS</td>
+                        <td>GRANADA (COSTA)</td>
+                        <td>5.00</td>
+                        <td>9.00</td>
+                        <td>7.38</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTRAS  FRUTAS</td>
+                        <td>LIMA DULCE (COSTA)</td>
+                        <td>2.00</td>
+                        <td>3.00</td>
+                        <td>2.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTRAS  FRUTAS</td>
+                        <td>LUCUMA</td>
+                        <td>8.00</td>
+                        <td>10.00</td>
+                        <td>8.75</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTRAS  FRUTAS</td>
+                        <td>PITAHAYA</td>
+                        <td>14.00</td>
+                        <td>15.00</td>
+                        <td>14.50</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTRAS  FRUTAS</td>
+                        <td>PACAY</td>
+                        <td>6.00</td>
+                        <td>7.50</td>
+                        <td>6.63</td>
+                    </tr>
+            
+                    <tr>
+                        <td>OTRAS  FRUTAS</td>
+                        <td>ARANDANOS</td>
+                        <td>21.00</td>
+                        <td>28.00</td>
+                        <td>24.75</td>
+                    </tr>
+            
+                    <tr>
+                        <td>COCO          </td>
+                        <td>COCO(COSTA/SELVA)</td>
+                        <td>2.00</td>
+                        <td>2.33</td>
+                        <td>2.25</td>
+                    </tr>
+            
+                    <tr>
+                        <td>CHIRIMOYA</td>
+                        <td>CHIRIMOYA CUMBE</td>
+                        <td>5.00</td>
+                        <td>6.50</td>
+                        <td>5.75</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MANDARINA</td>
+                        <td>MANDARINA</td>
+                        <td>2.30</td>
+                        <td>3.00</td>
+                        <td>2.55</td>
+                    </tr>
+            
+                    <tr>
+                        <td>MELON</td>
+                        <td>MELON</td>
+                        <td>2.50</td>
+                        <td>2.80</td>
+                        <td>2.65</td>
+                    </tr>
+            
+                    <tr>
+                        <td>GUANABANA</td>
+                        <td>GUANABANA</td>
+                        <td>5.00</td>
+                        <td>6.00</td>
+                        <td>5.25</td>
+                    </tr>
+            
+                </tbody>
+            </table>
+        
+        <script>
+            
+            var oTable = $("#tbReport").dataTable({
+					"bJQueryUI": true,
+					"sScrollY": "500px",
+                    "bPaginate": false,
+					"bScrollInfinite": true,
+                    "bScrollCollapse": true,
+                    "aaSorting": [],
+                    "bStateSave": true,
+                    "sDom": 'T<"clear">lfrtip<"clear spacer">T',
+                    "oTableTools": {
+                        "sSwfPath": "http://old.emmsa.com.pe/emmsa_spv/js/plugins/TableTools-2.1.5/media/swf/copy_csv_xls_pdf.swf",
+                        "aButtons": [
+                            "copy",
+                            "csv",
+                            "xls",
+                            {
+                                "sExtends": "pdf",
+                                "sPdfOrientation": "landscape",
+                                "sPdfMessage": ""
+                            },
+                            "print"
+                        ]
+                    }
+            });
+        
+        </script>
+    

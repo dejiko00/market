@@ -1,17 +1,16 @@
+import { type PriceHistory, priceHistoryEntity } from "models";
 import type typeorm from "typeorm";
-import { PriceHistory, priceHistoryEntity } from "models";
 import { createLoggerModule } from "utils-log";
 
-export default class PriceHistoryController {
-  static path = "/prices";
-  static logger = createLoggerModule(PriceHistoryController.path);
+const path = "/prices";
+const logger = createLoggerModule(path);
 
-  public static addMany = async (
+export const PriceHistoryController = {
+  addMany: async (
     prices: PriceHistory[],
     transactionalEntityManager: typeorm.EntityManager
   ) => {
-    const logger = PriceHistoryController.logger.child({ function: "addMany" });
-
+    const loggerController = logger.child({ function: "addMany" });
     const priceIds = (
       await transactionalEntityManager
         .upsert(priceHistoryEntity, prices, {
@@ -19,13 +18,13 @@ export default class PriceHistoryController {
           conflictPaths: { date_price: true, id_product_variety: true },
         })
         .catch((e) => {
-          logger.error(e, `upsert failed.`);
+          loggerController.error(e, `upsert failed.`);
           throw Error(e);
         })
     ).identifiers;
 
-    logger.info(`upsert success.`);
-    logger.debug(
+    loggerController.info(`upsert success.`);
+    loggerController.debug(
       {
         length: priceIds.length,
       },
@@ -39,9 +38,9 @@ export default class PriceHistoryController {
       }
     );
 
-    logger.info(`find success.`);
-    logger.debug({ length: pricesRes.length }, `find result.`);
+    loggerController.info(`find success.`);
+    loggerController.debug({ length: pricesRes.length }, `find result.`);
 
     return pricesRes;
-  };
-}
+  },
+};

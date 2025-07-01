@@ -1,14 +1,13 @@
 import fs from "node:fs/promises";
 import { Cookie, CookieJar } from "tough-cookie";
-import {
-  BASE_URL,
-  URL_COOKIES,
-  URL_HEADERS,
-  URL_RESPONSE,
-  USER_AGENT,
-} from "./common.js";
+import { USER_AGENT } from "../../utils/constants.js";
 
-export const pull = async (): Promise<boolean> => {
+export const pull = async (
+  url: string,
+  pathCookies: string,
+  pathHeaders: string,
+  pathResponse: string
+): Promise<boolean> => {
   try {
     const cookieJar = new CookieJar();
 
@@ -17,13 +16,13 @@ export const pull = async (): Promise<boolean> => {
       Connection: "keep-alive",
       Referer: "https://www.emmsa.com.pe/",
       "Upgrade-Insecure-Requests": "1",
-      "User-Agent": URL_COOKIES,
+      "User-Agent": pathCookies,
       Accept: "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
-      Cookie: await cookieJar.getCookieString(BASE_URL),
+      Cookie: await cookieJar.getCookieString(url),
     });
 
     const response = await fetch(
-      `${BASE_URL}/emmsa_spv/rpEstadistica/rpt_precios-diarios-web.php`,
+      `${url}/emmsa_spv/rpEstadistica/rpt_precios-diarios-web.php`,
       {
         method: "GET",
         credentials: "include",
@@ -41,7 +40,7 @@ export const pull = async (): Promise<boolean> => {
     if (!setCookieHeader) throw Error("GET 'set-cookie' headers are empty.");
     const resCookie = Cookie.parse(setCookieHeader);
     if (!resCookie) throw Error("PARSED cookies are empty.");
-    await cookieJar.setCookie(resCookie, BASE_URL);
+    await cookieJar.setCookie(resCookie, url);
 
     const h2 = new Headers({
       Accept: "text/html, */*; q=0.01",
@@ -51,19 +50,19 @@ export const pull = async (): Promise<boolean> => {
       Referer:
         "https://old.emmsa.com.pe/emmsa_spv/rpEstadistica/rpt_precios-diarios-web.php",
       "User-Agent": USER_AGENT,
-      Cookie: await cookieJar.getCookieString(BASE_URL),
+      Cookie: await cookieJar.getCookieString(url),
     });
 
     await fs
-      .writeFile(URL_COOKIES, (await cookieJar.getCookies(BASE_URL)).join("\n"))
+      .writeFile(pathCookies, (await cookieJar.getCookies(url)).join("\n"))
       .then(() => {
-        console.log(`📝 Logged cookies in: ${URL_COOKIES}`);
+        console.log(`📝 Logged cookies in: ${pathCookies}`);
       });
 
     await fs
-      .writeFile(URL_HEADERS, Array.from(h2.entries()).join("\n"))
+      .writeFile(pathHeaders, Array.from(h2.entries()).join("\n"))
       .then(() => {
-        console.log(`📝 Logged headers in: ${URL_HEADERS}.`);
+        console.log(`📝 Logged headers in: ${pathHeaders}.`);
       });
 
     const formData = new URLSearchParams();
@@ -73,7 +72,7 @@ export const pull = async (): Promise<boolean> => {
     formData.append("vfecha", "23/06/2025");
 
     const response2 = await fetch(
-      `${BASE_URL}/emmsa_spv/app/reportes/ajax/rpt07_gettable_new_web.php`,
+      `${url}/emmsa_spv/app/reportes/ajax/rpt07_gettable_new_web.php`,
       {
         method: "POST",
         credentials: "include",
@@ -88,8 +87,8 @@ export const pull = async (): Promise<boolean> => {
       console.log(`😀 STATUS: ${response2.status}`);
     }
 
-    await fs.writeFile(URL_RESPONSE, await response2.text()).then(() => {
-      console.log(`📝 Logged response in: ${URL_RESPONSE}.`);
+    await fs.writeFile(pathResponse, await response2.text()).then(() => {
+      console.log(`📝 Logged response in: ${pathResponse}.`);
     });
 
     return true;
